@@ -1,22 +1,25 @@
-import { Sidebar, SidebarProvider, SidebarHeader, SidebarMenuItem, SidebarMenu, SidebarMenuButton, useSidebar } from "./ui/sidebar";
-import { LucideCompass, LucideUsers } from "lucide-react";
+"use client"
+import { LucideCompass, LucideMenu, LucideUsers } from "lucide-react";
+import { Sidebar, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, useSidebar } from "./ui/sidebar";
+
+export function CustomTrigger() {
+    const { toggleSidebar } = useSidebar()
+    return <button onClick={toggleSidebar} className="md:hidden fixed left-4 top-4 z-40">
+        <LucideMenu className="h-4 w-4" />
+    </button>
+}
 
 export function LeftSidebar() {
-    const {
-        state,
-        open,
-        setOpen,
-        openMobile,
-        setOpenMobile,
-        isMobile,
-        toggleSidebar,
-    } = useSidebar()
     const links = [
         { "label": "Foo", "url": "#", "icon": LucideCompass },
         { "label": "Bar", "url": "#", "icon": LucideUsers }
     ]
     return (
-        <SidebarProvider>
+        <SidebarProvider
+            style={{
+                "--sidebar-width": "14rem",
+                "--sidebar-width-mobile": "18rem"
+            } as React.CSSProperties}>
             <Sidebar variant="floating" collapsible="icon" >
                 <SidebarHeader className="text-center">
                     Fumblr
@@ -34,6 +37,7 @@ export function LeftSidebar() {
                     ))}
                 </SidebarMenu>
             </Sidebar>
+            <CustomTrigger />
         </SidebarProvider>
     )
 }
