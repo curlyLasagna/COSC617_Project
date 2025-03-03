@@ -1,6 +1,6 @@
 "use client"
 import { LucideCompass, LucideMenu, LucideUsers } from "lucide-react";
-import { Sidebar, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger, useSidebar } from "./ui/sidebar";
+import { Sidebar, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, useSidebar } from "./ui/sidebar";
 
 export function CustomTrigger() {
     const { toggleSidebar } = useSidebar()
@@ -15,29 +15,22 @@ export function LeftSidebar() {
         { "label": "Bar", "url": "#", "icon": LucideUsers }
     ]
     return (
-        <SidebarProvider
-            style={{
-                "--sidebar-width": "14rem",
-                "--sidebar-width-mobile": "18rem"
-            } as React.CSSProperties}>
-            <Sidebar variant="floating" collapsible="icon" >
-                <SidebarHeader className="text-center">
-                    Fumblr
-                </SidebarHeader>
-                <SidebarMenu>
-                    {links.map(l => (
-                        <SidebarMenuItem key={l.label}>
-                            <SidebarMenuButton asChild>
-                                <a href={l.url}>
-                                    <l.icon />
-                                    <span>{l.label}</span>
-                                </a>
-                            </SidebarMenuButton>
-                        </SidebarMenuItem>
-                    ))}
-                </SidebarMenu>
-            </Sidebar>
-            <CustomTrigger />
-        </SidebarProvider>
+        <Sidebar collapsible="icon" >
+            <SidebarHeader className="text-center">
+                Fumblr
+            </SidebarHeader>
+            <SidebarMenu>
+                {links.map(l => (
+                    <SidebarMenuItem key={l.label}>
+                        <SidebarMenuButton asChild>
+                            <a href={l.url}>
+                                <l.icon />
+                                <span>{l.label}</span>
+                            </a>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                ))}
+            </SidebarMenu>
+        </Sidebar>
     )
 }

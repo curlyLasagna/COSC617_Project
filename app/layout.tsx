@@ -3,7 +3,8 @@ import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { TopBar } from "@/components/top-bar";
-import { LeftSidebar } from "@/components/left-sidebar";
+import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -34,18 +35,27 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen flex flex-col items-center px-10">
-            <LeftSidebar />
-            <div className="flex-1 w-full flex flex-col gap-20 items-center">
-              <TopBar />
+          <SidebarProvider
+            style={{
+              "--sidebar-width": "14rem",
+              "--sidebar-width-mobile": "18rem"
+            } as React.CSSProperties}>
+            <div className="flex">
+              <LeftSidebar />
+            </div>
+            <main className="flex-1 flex flex-col justify-center px-10">
+              <CustomTrigger />
+              <div className="flex-1 flex flex-col">
+                <TopBar />
+              </div>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
               </div>
               <ThemeSwitcher />
-            </div>
-          </main>
+            </main>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
-    </html>
+    </html >
   );
 }
