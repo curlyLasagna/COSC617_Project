@@ -2,6 +2,7 @@ import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import { TopBar } from "@/components/top-bar";
 import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
@@ -44,6 +45,9 @@ export default function RootLayout({
             </div>
             <main className="flex-1 flex flex-col justify-center px-10">
               <CustomTrigger />
+              <div className="flex-1 flex flex-col">
+                <TopBar />
+              </div>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
                 {children}
               </div>
