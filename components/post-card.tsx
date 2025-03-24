@@ -8,7 +8,6 @@ export interface Post {
     username: string;
     profilePic: string;
     postTime: Date;
-    content: string;
     notes: number;
     isFollowing: boolean;
 
