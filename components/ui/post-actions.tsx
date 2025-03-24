@@ -4,9 +4,9 @@ import { Heart, MessageSquare, Repeat2, Bookmark } from "lucide-react";
 
 export const PostActions = () => {
   const actions = [
-    { icon: Heart, label: "Like" },
-    { icon: Repeat2, label: "Reblog" },
     { icon: MessageSquare, label: "Reply" },
+    { icon: Repeat2, label: "Reblog" },
+    { icon: Heart, label: "Like" }
   ];
 
   return (

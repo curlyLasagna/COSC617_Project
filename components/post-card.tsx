@@ -1,14 +1,13 @@
 import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card";
 import { UserAvatar } from "./ui/user-avatar";
 import { PostActions } from "./ui/post-actions";
-import { TimeAgo } from "./ui/time-ago";
 
 interface PostCardProps {
   post: {
     id: string;
     username: string;
     profilePic: string;
-    postTime: Date; // Now using Date object
+    postTime: Date;
     content: string;
     notes: number;
     isFollowing: boolean;

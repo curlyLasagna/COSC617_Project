@@ -1,4 +1,3 @@
-// data/mock-posts.ts
 export interface MockPost {
     id: string;
     username: string;
