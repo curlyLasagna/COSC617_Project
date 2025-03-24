@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { UserPlus, Ellipsis } from "lucide-react";
-import { TimeAgo } from "./time-ago";
+
 
 interface UserAvatarProps {
   username: string;
@@ -16,6 +16,11 @@ export const UserAvatar = ({
   isFollowing,
   postTime,
 }: UserAvatarProps) => {
+  const formattedDate = postTime.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  });
   return (
     <div className="flex justify-between items-start w-full">
       <div className="flex gap-3 items-center">
@@ -25,13 +30,13 @@ export const UserAvatar = ({
         </Avatar>
         <div>
           <p className="font-semibold">{username}</p>
-          <TimeAgo date={postTime} />
+          <p className="text-xs text-muted-foreground">{formattedDate}</p>
         </div>
       </div>
 
       <div className="flex gap-2">
         {!isFollowing && (
-          <Button variant="outline" size="sm" className="gap-1">
+          <Button variant="outline" size="sm" className="gap-1 bg-white/10">
             <UserPlus className="h-4 w-4" />
             Follow
           </Button>

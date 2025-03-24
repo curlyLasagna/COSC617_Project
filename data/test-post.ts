@@ -2,12 +2,12 @@ export const testPosts = [
   //text
   {
     id: "1",
-    username: "thoughts-daily",
+    username: "shit-poster",
     profilePic: "https://i.pravatar.cc/150?img=11",
     postTime: new Date(Date.now() - 3600000 * 3), // 3 hours ago
     postType: "text",
-    title: "Why I Love Next.js",
-    textContent: "After using it for several projects, I've found Next.js to be the most productive framework I've worked with. The file-based routing, API routes, and now the App Router have completely changed how I build web apps.",
+    title: "Own a musket for home defense",
+    textContent: 'Own a musket for home defense, since that\'s what the founding fathers intended. Four ruffians break into my house. "What the devil?" As I grab my powdered wig and Kentucky rifle. Blow a golf ball sized hole through the first man, he\'s dead on the spot. Draw my pistol on the second man, miss him entirely because it\'s smoothbore and nails the neighbors dog. I have to resort to the cannon mounted at the top of the stairs loaded with grape shot, "Tally ho lads" the grape shot shreds two men in the blast, the sound and extra shrapnel set off car alarms. Fix bayonet and charge the last terrified rapscallion. He Bleeds out waiting on the police to arrive since triangular bayonet wounds are impossible to stitch up. Just as the founding fathers intended.',
     notes: 28,
     isFollowing: false
   },
@@ -21,7 +21,6 @@ export const testPosts = [
     postType: "photo",
     mediaUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
     caption: "Downtown skyline at golden hour",
-    textContent: "Caught this amazing light yesterday evening!",
     notes: 142,
     isFollowing: false
   },

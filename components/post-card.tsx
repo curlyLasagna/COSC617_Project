@@ -29,30 +29,29 @@ export const PostCard = ({ post }: PostCardProps) => {
       case 'photo':
         return (
           <div className="space-y-2">
-            {post.textContent && <p>{post.textContent}</p>}
             <img 
               src={post.mediaUrl} 
               alt={post.caption || ''}
-              className="rounded-lg w-full max-h-[500px] object-cover"
+              className="w-full max-h-[500px] object-cover"
             />
-            {post.caption && <p className="text-sm text-muted-foreground">{post.caption}</p>}
+            {post.caption && <p className="text-m px-4 py-2">{post.caption}</p>}
           </div>
         );
 
       case 'video':
         return (
-          <div className="space-y-2">
+          <div className="space-y-4">
             {post.textContent && <p>{post.textContent}</p>}
-            <video controls className="rounded-lg w-full">
+            <video controls className="w-full">
               <source src={post.mediaUrl} />
             </video>
-            {post.caption && <p className="text-sm text-muted-foreground">{post.caption}</p>}
+            {post.caption && <p className="text-m px-4">{post.caption}</p>}
           </div>
         );
 
       case 'link':
         return (
-          <div className="space-y-2">
+          <div className="px-4">
             {post.textContent && <p>{post.textContent}</p>}
             <a 
               href={post.mediaUrl} 
@@ -69,15 +68,19 @@ export const PostCard = ({ post }: PostCardProps) => {
       default: // text
         return (
           <div className="space-y-2">
-            {post.title && <h3 className="font-bold">{post.title}</h3>}
-            <p>{post.textContent}</p>
+            {post.title && (
+              <h3 className="text-xl font-bold tracking-tight px-4">
+                {post.title}
+                </h3>)}
+            <p className ="px-4">
+            {post.textContent}</p>
           </div>
         );
     }
   };
   return (
-    <Card className="w-full max-w-2xl">
-      <CardHeader className="p-4">
+    <Card className="w-full max-w-2xl bg-white/10 backdrop-blur-sm">
+      <CardHeader className="px-4 pb-2 pt-4">
         <UserAvatar
           username={post.username}
           profilePic={post.profilePic}
@@ -86,15 +89,16 @@ export const PostCard = ({ post }: PostCardProps) => {
         />
       </CardHeader>
 
-      <CardContent className="p-4">
+      <CardContent className="px-0 pt-2">
         {renderPostContent()}
       </CardContent>
 
-      <div className="border-t mx-4" />
+      <div className="border-t border-neutral-400 dark:border-neutral-700 mx-4 my-0" />
 
-      <CardFooter className="p-4 flex justify-between items-center">
-        <span className="text-sm text-muted-foreground">
-          {post.notes} notes
+      <CardFooter className="px-4 pb-2 pt-2 flex justify-between items-center">
+        <span className="text-m text-muted-foreground border border-neutral-400 rounded-full px-3 py-1">
+        <span className="font-bold text-white">
+          {post.notes}</span> notes
         </span>
         <PostActions />
       </CardFooter>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
-import { Heart, MessageSquare, Repeat2, Bookmark } from "lucide-react";
+import { Heart, MessageSquare, Repeat2 } from "lucide-react";
 
 export const PostActions = () => {
   const actions = [
@@ -10,12 +10,12 @@ export const PostActions = () => {
   ];
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-2">
       {actions.map((action) => (
         <Tooltip key={action.label}>
           <TooltipTrigger asChild>
             <Button variant="ghost" size="sm" className="p-2">
-              <action.icon className="h-5 w-5" />
+              <action.icon className="h-7 w-7" />
             </Button>
           </TooltipTrigger>
           <TooltipContent>{action.label}</TooltipContent>
