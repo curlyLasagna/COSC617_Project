@@ -3,8 +3,7 @@ import { UserAvatar } from "./ui/user-avatar";
 import { PostActions } from "./ui/post-actions";
 import { Link} from "lucide-react";
 
-interface PostCardProps {
-  post: {
+export interface Post {
     id: string;
     username: string;
     profilePic: string;
@@ -18,9 +17,9 @@ interface PostCardProps {
     title?: string;             
     mediaUrl?: string;          
     caption?: string;  
-    
-    // for video posts
-  };
+}
+interface PostCardProps{
+  post: Post;
 }
 
 export const PostCard = ({ post }: PostCardProps) => {
@@ -96,7 +95,7 @@ export const PostCard = ({ post }: PostCardProps) => {
       <div className="border-t border-neutral-400 dark:border-neutral-700 mx-4 my-0" />
 
       <CardFooter className="px-4 pb-2 pt-2 flex justify-between items-center">
-        <span className="text-m text-muted-foreground border border-neutral-400 rounded-full px-3 py-1">
+        <span className="text-m border border-neutral-400 rounded-full px-3 py-1">
         <span className="font-bold">
           {post.notes}</span> notes
         </span>

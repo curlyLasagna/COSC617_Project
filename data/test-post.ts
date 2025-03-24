@@ -1,4 +1,5 @@
-export const testPosts = [
+import type { Post } from "@/components/post-card";
+export const testPosts: Post[] = [
   //text
   {
     id: "1",

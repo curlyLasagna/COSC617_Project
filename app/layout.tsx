@@ -6,7 +6,6 @@ import { TopBar } from "@/components/top-bar";
 import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { StickyFooter } from "@/components/sticky-footer";
-import { Feed } from "@/components/feed";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -51,10 +50,7 @@ export default function RootLayout({
                 <TopBar />
               </div>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
-                <div className="max-w-4xl mx -auto">
-                  {children}
-                  <Feed />
-                </div>
+                {children}
               </div>
               <ThemeSwitcher />
             </main>
