@@ -44,7 +44,7 @@ export default function RootLayout({
             <div className="flex">
               <LeftSidebar />
             </div>
-            <main className="flex-1 flex flex-col justify-center px-10">
+            <main className="flex-1 flex flex-col items-center px-4 sm:px-6">
               <CustomTrigger />
               <div className="flex-1 flex flex-col">
                 <TopBar />
