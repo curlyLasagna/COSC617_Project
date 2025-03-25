@@ -17,9 +17,9 @@ export function LeftSidebar() {
   return (
     <Sidebar collapsible="icon" >
       <SidebarHeader className="text-center">
-        Fumblr
+        <p className="text-xl pt-5">Fumblr</p>
       </SidebarHeader>
-      <SidebarMenu>
+      <SidebarMenu className="pl-3">
         {links.map(l => (
           <SidebarMenuItem key={l.label}>
             <SidebarMenuButton asChild>
