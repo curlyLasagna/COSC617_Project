@@ -8,7 +8,7 @@ export const PostActions = () => {
     { icon: Repeat2, label: "Reblog" },
     { icon: Heart, label: "Like" }
   ];
-
+// button formatting
   return (
     <div className="flex gap-2">
       {actions.map((action) => (

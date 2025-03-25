@@ -1,6 +1,7 @@
 import { PostCard } from "@/components/post-card";
 import { testPosts } from "@/data/test-post";
 
+// populate landing page w/ posts
 export default async function Home() {
   return (
     <>

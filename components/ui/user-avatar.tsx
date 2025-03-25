@@ -2,7 +2,6 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { UserPlus, Ellipsis } from "lucide-react";
 
-
 interface UserAvatarProps {
   username: string;
   profilePic: string;
@@ -15,6 +14,7 @@ export const UserAvatar = ({
   profilePic,
   isFollowing,
   postTime,
+  //user avatar formatting
 }: UserAvatarProps) => {
   const formattedDate = postTime.toLocaleDateString('en-US', {
     month: 'short',

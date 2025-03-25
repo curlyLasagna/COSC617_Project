@@ -2,6 +2,7 @@ import { Card, CardHeader, CardContent, CardFooter } from "@/components/ui/card"
 import { UserAvatar } from "./ui/user-avatar";
 import { PostActions } from "./ui/post-actions";
 import { Link} from "lucide-react";
+import { Button } from "./ui/button";
 
 export interface Post {
     id: string;
@@ -24,6 +25,7 @@ interface PostCardProps{
 export const PostCard = ({ post }: PostCardProps) => {
   const renderPostContent = () => {
     switch (post.postType) {
+      //photo posts
       case 'photo':
         return (
           <div className="space-y-2">
@@ -35,7 +37,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             {post.caption && <p className="text-m px-4 py-2">{post.caption}</p>}
           </div>
         );
-
+        // video posts
       case 'video':
         return (
           <div className="space-y-4">
@@ -46,7 +48,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             {post.caption && <p className="text-m px-4">{post.caption}</p>}
           </div>
         );
-
+        //link posts
       case 'link':
         return (
           <div className="px-4">
@@ -62,7 +64,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             </a>
           </div>
         );
-
+        //text posts
       default: // text
         return (
           <div className="space-y-2">
@@ -76,6 +78,7 @@ export const PostCard = ({ post }: PostCardProps) => {
         );
     }
   };
+  //card formatting
   return (
     <Card className="w-full max-w-2xl bg-white/10 backdrop-blur-sm">
       <CardHeader className="px-4 pb-2 pt-4">
@@ -94,11 +97,14 @@ export const PostCard = ({ post }: PostCardProps) => {
       <div className="border-t border-neutral-400 dark:border-neutral-700 mx-4 my-0" />
 
       <CardFooter className="px-4 pb-2 pt-2 flex justify-between items-center">
-        <span className="text-m border border-neutral-400 rounded-full px-3 py-1">
-        <span className="font-bold">
-          {post.notes}</span> notes
-        </span>
-        <PostActions />
+      <Button 
+          variant="outline" 
+          size="sm" 
+          className="rounded-full px-3 py-1 h-auto border-neutral-400"
+        >
+          <span className="font-bold mr-1">{post.notes}</span> {' '}notes
+        </Button>
+        <PostActions/>
       </CardFooter>
     </Card>
   );
