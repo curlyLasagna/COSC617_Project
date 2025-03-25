@@ -37,19 +37,22 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider
-            style={{
-              "--sidebar-width": "14rem",
-              "--sidebar-width-mobile": "18rem"
-            } as React.CSSProperties}>
+            style={
+              {
+                "--sidebar-width": "14rem",
+                "--sidebar-width-mobile": "18rem",
+              } as React.CSSProperties
+            }
+          >
             <div className="flex">
               <LeftSidebar />
             </div>
             <main className="flex-1 flex flex-col justify-center px-10">
               <CustomTrigger />
-              <div className="flex-1 flex flex-col">
+              <div className="max-w-screen-2xl">
                 <TopBar />
               </div>
-              <div className="flex flex-col gap-20 max-w-5xl p-5">
+              <div className="flex-1 flex-col gap-2 max-w-screen-2xl p-5">
                 {children}
               </div>
               <ThemeSwitcher />
@@ -58,6 +61,6 @@ export default function RootLayout({
         </ThemeProvider>
         <StickyFooter />
       </body>
-    </html >
+    </html>
   );
 }
