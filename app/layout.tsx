@@ -59,7 +59,7 @@ export default function RootLayout({
                   <ThemeSwitcher />
                 </main>
 
-                {/* ✅ Right Sidebar added here */}
+                {/* Right Sidebar */}
                 <RightSidebar />
               </div>
             </div>

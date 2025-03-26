@@ -1,12 +1,25 @@
-"use client"
+"use client";
 import { LucideCompass, LucideMenu, LucideUsers } from "lucide-react";
-import { Sidebar, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "./ui/sidebar";
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  useSidebar,
+} from "./ui/sidebar";
 
 export function CustomTrigger() {
-  const { toggleSidebar } = useSidebar()
-  return <button onClick={toggleSidebar} className="md:hidden fixed left-4 top-4 z-40">
-    <LucideMenu className="h-4 w-4" />
-  </button>
+  const { toggleSidebar } = useSidebar();
+  return (
+    <button
+      onClick={toggleSidebar}
+      type="button"
+      className="md:hidden fixed left-4 top-4 z-40"
+    >
+      <LucideMenu className="h-4 w-4" />
+    </button>
+  );
 }
 
 export function LeftSidebar() {
@@ -17,9 +30,9 @@ export function LeftSidebar() {
   return (
     <Sidebar collapsible="icon" >
       <SidebarHeader className="text-center">
-        Fumblr
+        <p className="text-xl pt-5">Fumblr</p>
       </SidebarHeader>
-      <SidebarMenu>
+      <SidebarMenu className="pl-3">
         {links.map(l => (
           <SidebarMenuItem key={l.label}>
             <SidebarMenuButton asChild>
