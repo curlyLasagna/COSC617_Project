@@ -6,6 +6,7 @@ import { TopBar } from "@/components/top-bar";
 import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { StickyFooter } from "@/components/sticky-footer";
+import { RightSidebar } from "@/components/RightSidebar"; 
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -42,22 +43,30 @@ export default function RootLayout({
               "--sidebar-width-mobile": "18rem"
             } as React.CSSProperties}>
             <div className="flex">
+              {/* Left Sidebar */}
               <LeftSidebar />
+
+              {/* Main Content with Right Sidebar */}
+              <div className="flex flex-1">
+                <main className="flex-1 flex flex-col justify-center px-10">
+                  <CustomTrigger />
+                  <div className="flex-1 flex flex-col">
+                    <TopBar />
+                  </div>
+                  <div className="flex flex-col gap-20 max-w-5xl p-5">
+                    {children}
+                  </div>
+                  <ThemeSwitcher />
+                </main>
+
+                {/* Right Sidebar */}
+                <RightSidebar />
+              </div>
             </div>
-            <main className="flex-1 flex flex-col items-center px-4 sm:px-6">
-              <CustomTrigger />
-              <div className="flex-1 flex flex-col">
-                <TopBar />
-              </div>
-              <div className="flex flex-col gap-20 max-w-5xl p-5">
-                {children}
-              </div>
-              <ThemeSwitcher />
-            </main>
           </SidebarProvider>
         </ThemeProvider>
         <StickyFooter />
       </body>
-    </html >
+    </html>
   );
 }
