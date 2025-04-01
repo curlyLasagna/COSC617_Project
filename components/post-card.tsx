@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 export interface Post {
     id: string;
     username: string;
-    profilePic: string;
+    profilePic: string | null;
     postTime: Date;
     notes: number;
     isFollowing: boolean;
@@ -78,13 +78,18 @@ export const PostCard = ({ post }: PostCardProps) => {
         );
     }
   };
+
+
   //card formatting
   return (
     <Card className="w-full max-w-2xl bg-white/10 backdrop-blur-sm">
       <CardHeader className="px-4 pb-2 pt-4">
         <UserAvatar
-          username={post.username}
-          profilePic={post.profilePic}
+          user={{
+            username: post.username,
+            profile_picture_url: post.profilePic // Map profilePic to profile_picture_url
+          }}
+          profilePic={post.profilePic || ''}
           isFollowing={post.isFollowing}
           postTime={post.postTime}
         />

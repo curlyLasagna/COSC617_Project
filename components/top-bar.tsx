@@ -29,9 +29,9 @@ export const TopBar = ({ routes }: TopBarProps) => {
   const pathname = usePathname();
 
   const defaultRoutes = [
-    { label: "Trending", href: "/trending" },
+    { label: "Trending", href: "/" },
     { label: "Staff Picks", href: "/following" },
-    { label: "More", href: "/" },
+    { label: "More", href: "/More" },
 
   ];
 
