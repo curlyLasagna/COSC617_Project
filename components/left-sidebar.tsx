@@ -1,5 +1,5 @@
 "use client";
-import { LucideCompass, LucideMenu, LucideUsers, Palette } from "lucide-react";
+import { LucideCompass, LucideMenu, LucideUsers,Home } from "lucide-react";
 import {
   Sidebar,
   SidebarHeader,
@@ -25,7 +25,7 @@ export function CustomTrigger() {
 
 export function LeftSidebar() {
   const links = [
-    { "label": "Foo", "url": "#", "icon": LucideCompass },
+    { "label": "Explore", "url": "#", "icon": LucideCompass },
     { "label": "Bar", "url": "#", "icon": LucideUsers }
   ]
   return (

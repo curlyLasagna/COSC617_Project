@@ -29,10 +29,10 @@ export const TopBar = ({ routes }: TopBarProps) => {
   const pathname = usePathname();
 
   const defaultRoutes = [
-    { label: "For you", href: "/" },
-    { label: "Following", href: "/following" },
-    { label: "FumblrTV", href: "/fumblrtv" },
-    { label: "Your tags", href: "/your-tags" },
+    { label: "Trending", href: "/trending" },
+    { label: "Staff Picks", href: "/following" },
+    { label: "More", href: "/" },
+
   ];
 
   const finalRoutes = routes || defaultRoutes;

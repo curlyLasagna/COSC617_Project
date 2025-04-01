@@ -32,7 +32,7 @@ const ThemeSwitcher = () => {
       <DropdownMenuTrigger asChild>
       <div className="flex items-center gap-3 w-full text-lg px-1.5 pt- rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer">
           <Palette className="h-4 w-4 flex-shrink-0" />
-          <span>Theme</span>
+          <span>Change palette</span>
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48" align="start">
