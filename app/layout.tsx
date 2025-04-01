@@ -1,4 +1,3 @@
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -6,7 +5,7 @@ import { TopBar } from "@/components/top-bar";
 import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { StickyFooter } from "@/components/sticky-footer";
-import { RightSidebar } from "@/components/RightSidebar"; 
+import { RightSidebar } from "@/components/RightSidebar";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -30,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -41,31 +40,37 @@ export default function RootLayout({
             style={{
               "--sidebar-width": "14rem",
               "--sidebar-width-mobile": "18rem"
+              
             } as React.CSSProperties}>
-            <div className="flex">
-              {/* Left Sidebar */}
-              <LeftSidebar />
-
-              {/* Main Content with Right Sidebar */}
-              <div className="flex flex-1">
-                <main className="flex-1 flex flex-col justify-center px-10">
-                  <CustomTrigger />
-                  <div className="flex-1 flex flex-col">
-                    <TopBar />
-                  </div>
-                  <div className="flex flex-col gap-20 max-w-5xl p-5">
-                    {children}
-                  </div>
-                  <ThemeSwitcher />
-                </main>
-
-                {/* Right Sidebar */}
-                <RightSidebar />
+            
+            <CustomTrigger />
+            
+            <div className="mx-auto" style={{ maxWidth: "1200px" }}>
+              <div className="grid grid-cols-1 lg:grid-cols-[14rem_1fr_14rem] gap-0">
+                {/* Left sidebar */}
+                <div className="hidden lg:block sticky top-0 h-screen overflow-hidden border-r">
+                  <LeftSidebar />
+                </div>
+                
+                {/* Main content & Topbar */}
+                <div className="w-full flex flex-col">
+                  <TopBar/>
+                  <main className="flex-1 flex flex-col items-center transition-[padding] duration-200">
+                    <div className="w-full max-w-2xl pt-4 px-2 lg:px-0">
+                      {children}
+                    </div>
+                  </main>
+                </div>
+                
+                {/* Right sidebar*/}
+                <div className="hidden lg:block sticky top-0 h-screen overflow-hidden border-l">
+                  <RightSidebar />
+                </div>
               </div>
             </div>
           </SidebarProvider>
+          <StickyFooter />
         </ThemeProvider>
-        <StickyFooter />
       </body>
     </html>
   );
