@@ -26,14 +26,14 @@ const geistSans = Geist({
 
 async function checkUser() {
   const supabase = await createClient();
-  const { data, error } = await supabase.auth.getSession();
+  const { data, error } = await supabase.auth.getUser();
 
   if (error) {
     console.error("Error getting session:", error);
     return null;
   }
 
-  return data.session?.user || null;
+  return data.user || null;
 }
 
 export default async function RootLayout({
