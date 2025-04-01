@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "./ui/button";
 import {
   DialogContent,
@@ -9,6 +10,7 @@ import {
 
 import Login from "./sign-in";
 import SignUp from "./sign-up";
+
 
 export const DialogComponent = (props: {
   className: string;
@@ -36,6 +38,21 @@ export const DialogComponent = (props: {
       </DialogContent>
     </Dialog>
   );
+};
+
+export const checkUserExists = async (email: string) => {
+  const res = await fetch("/api/check-user", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to check user");
+  }
+
+  const { exists } = await res.json();
+  return exists;
 };
 
 export function StickyFooter() {
