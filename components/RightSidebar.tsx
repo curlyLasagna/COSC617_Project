@@ -11,7 +11,7 @@ export const RightSidebar = () => {
         <div className="relative mx-0">
           <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-6 text-gray-400" />
           <Input  placeholder="Search Fumblr"
-            className="w-full pl-12 py-5 text-base rounded-full" // Increased size
+            className="w-full pl-12 py-5 text-base rounded-full"
           />
         </div>
       </div>

@@ -44,7 +44,7 @@ export function LeftSidebar() {
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
-        {/* Integrated Theme Switcher */}
+        {/* Integrated theme switcher as a button -- wowzers how does she do it?? :O */}
         <SidebarMenuItem>
           <ThemeSwitcher />
         </SidebarMenuItem>

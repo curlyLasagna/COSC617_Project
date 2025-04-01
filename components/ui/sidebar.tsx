@@ -226,14 +226,14 @@ const Sidebar = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "group peer sticky top-0 h-screen hidden md:block",
+          "group peer h-full hidden md:block bg-background",
           className
         )}
         data-state={state}
         data-collapsible={state === "collapsed" ? collapsible : ""}
         data-variant={variant}
         data-side={side}
-      >
+      >  
         {/* This is what handles the sidebar gap on desktop */}
         <div
         data-sidebar="sidebar"
