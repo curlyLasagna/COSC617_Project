@@ -238,13 +238,32 @@ const Sidebar = React.forwardRef<
         <div
         data-sidebar="sidebar"
         className={cn(
-          "flex h-full w-[--sidebar-width] flex-col bg-background sticky top-0",
-          variant === "floating" && "rounded-lg border border-border shadow",
-          className
+          "sticky top-0 z-10 h-svh transition-all duration-200 ease-linear will-change-[width, transform] overflow-hidden",
+          // This is the default width of the sidebar.
+          "w-[--sidebar-width]",
+          // offcanvas mode handling
+          side == "left"
+          ? "group-data-[collapsible=offcanvas]:-translate-x-full" 
+          : "group-data-[collapsible=offcanvas]:translate-x-full",
+
+          //icon mode handling
+          "group-data-[collapsible=icon]:w-[--sidebar-width-icon]",
+          
+          //variants
+          variant === "floating" && "p-2",
+          variant === "inset" && "border-r border-border",
+          //rightside rotation
+          side === "right" && "rotate-180 [&>*]:rotate-180"
         )}
         {...props}
       >
-        {children}
+        <div className={cn(
+          "flex h-full flex-col overflow-hidden",
+          variant === "floating" && "rounded-lg border border-border shadow bg-background",
+          variant === "inset" && "bg-sidebar"
+      )}>
+          {children}
+        </div>
       </div>
     </div>
     )
