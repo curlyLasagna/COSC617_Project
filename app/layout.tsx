@@ -53,13 +53,10 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider
-            style={
-              {
-                "--sidebar-width": "14rem",
-                "--sidebar-width-mobile": "18rem",
-              } as React.CSSProperties
-            }
-          >
+            style={{
+              "--sidebar-width": "14rem",
+              "--sidebar-width-mobile": "18rem"
+            } as React.CSSProperties}>
             <div className="flex">
               {/* Left Sidebar */}
               <LeftSidebar />
@@ -85,6 +82,6 @@ export default async function RootLayout({
         </ThemeProvider>
         {!user && <StickyFooter />}
       </body>
-    </html>
+    </html >
   );
 }
