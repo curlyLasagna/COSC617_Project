@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prepare": "lefthook install",
     "start": "next start"
   },
   "dependencies": {
