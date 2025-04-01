@@ -38,7 +38,7 @@ export const TopBar = ({ routes }: TopBarProps) => {
   const finalRoutes = routes || defaultRoutes;
 
   return (
-    <div className="flex items-center justify-between w-full border-b border-gray-200 dark:border-gray-800 bg-background pt-4 pb-1">
+    <div className="flex items-center justify-between w-full border-b border-gray-200 dark:border-gray-800 bg-background pt-2 pb-1">
       <NavigationMenu className="max-w-full justify-start">
         <NavigationMenuList>
           {finalRoutes.map((route) => (

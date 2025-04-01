@@ -1,4 +1,3 @@
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -59,14 +58,11 @@ export default function RootLayout({
                     <div className="w-full max-w-2xl pt-4 px-2">
                       {children}
                     </div>
-                    <div className="mt-8">
-                      <ThemeSwitcher />
-                    </div>
                   </main>
                 </div>
                 
                 {/* Right sidebar*/}
-                <div className="hidden lg:block sticky top-0 h-screen border-l border-gray-200 dark:border-gray-800 overflow-y-auto" style={{ width: "15rem" }}>
+                <div className="hidden lg:block sticky top-0 h-screen border-l border-gray-200 dark:border-gray-800">
                   <RightSidebar />
                 </div>
               </div>
