@@ -1,60 +1,4 @@
-"use client";
-import { Button } from "./ui/button";
-import {
-  DialogContent,
-  DialogHeader,
-  DialogTrigger,
-  Dialog,
-  DialogTitle,
-} from "./ui/dialog";
-
-import Login from "./sign-in";
-import SignUp from "./sign-up";
-
-
-export const DialogComponent = (props: {
-  className: string;
-  content: React.ReactNode;
-  action: string;
-}) => {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button className={props.className}>{props.action}</Button>
-      </DialogTrigger>
-      <DialogContent className="p-0 pb-8">
-        <div>
-          <DialogHeader>
-            <DialogTitle />
-          </DialogHeader>
-          <img
-            className="w-full rounded-t-sm"
-            src="https://media1.tenor.com/m/rDljTZkftN8AAAAC/anime-girl-blushing-anime.gif"
-          />
-        </div>
-        <div className="flex items-center justify-center flex-col gap-5">
-          {props.content}
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
-export const checkUserExists = async (email: string) => {
-  const res = await fetch("/api/check-user", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email }),
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to check user");
-  }
-
-  const { exists } = await res.json();
-  return exists;
-};
-
+import AuthDialog from "./auth-dialog";
 export function StickyFooter() {
   return (
     <div className="sticky bottom-0 bg-[#7c5cff] max-w-none py-2 z-50">
@@ -65,16 +9,7 @@ export function StickyFooter() {
             <b>huzz</b>
           </div>
           <div className="flex flex-row gap-4 w-full justify-center">
-            <DialogComponent
-              className="w-full rounded-full bg-black text-white hover:bg-black/90"
-              content={<SignUp />}
-              action="Sign Up"
-            />
-            <DialogComponent
-              className="w-full rounded-full bg-[#6f53e5] text-white hover:bg-[#6048c9]/90"
-              content={<Login />}
-              action="Log in"
-            />
+            <AuthDialog />
           </div>
         </div>
       </div>
