@@ -6,7 +6,8 @@ import { TopBar } from "@/components/top-bar";
 import { LeftSidebar, CustomTrigger } from "@/components/left-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { StickyFooter } from "@/components/sticky-footer";
-import { RightSidebar } from "@/components/RightSidebar"; 
+import { RightSidebar } from "@/components/RightSidebar";
+import { createClient } from "@/utils/supabase/server";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -23,11 +24,25 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-export default function RootLayout({
+async function checkUser() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
+
+  if (error) {
+    console.error("Error getting session:", error);
+    return null;
+  }
+
+  return data.user || null;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await checkUser();
+
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
@@ -38,10 +53,13 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider
-            style={{
-              "--sidebar-width": "14rem",
-              "--sidebar-width-mobile": "18rem"
-            } as React.CSSProperties}>
+            style={
+              {
+                "--sidebar-width": "14rem",
+                "--sidebar-width-mobile": "18rem",
+              } as React.CSSProperties
+            }
+          >
             <div className="flex">
               {/* Left Sidebar */}
               <LeftSidebar />
@@ -65,7 +83,7 @@ export default function RootLayout({
             </div>
           </SidebarProvider>
         </ThemeProvider>
-        <StickyFooter />
+        {!user && <StickyFooter />}
       </body>
     </html>
   );
