@@ -85,7 +85,7 @@ export default function AuthDialog() {
 		}
 
 		//TODO: check if username is already taken
-		if (username.length < 10) {
+		if (username.length < 5) {
 			setError("Username should be at least 10 characters long");
 			return;
 		}
