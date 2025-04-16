@@ -58,6 +58,7 @@ export default function AuthDialog() {
 	};
 
 	const signIn = async () => {
+		setError("");
 		const formData = new FormData();
 		formData.append("email", email);
 		formData.append("password", password);
@@ -72,6 +73,7 @@ export default function AuthDialog() {
 	};
 
 	const signUp = async () => {
+		setError("");
 		if (password !== confirmPassword) {
 			setError("Passwords do not match");
 			return;
