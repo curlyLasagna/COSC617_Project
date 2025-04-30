@@ -1,6 +1,8 @@
 import { Sidebar, SidebarFooter, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
+import { RecommendedBlogs } from "./recommended-blogs";
+import { uiBlogs } from "@/data/mock-blogs";
 
 export const RightSidebar = () => {
   return (
@@ -15,16 +17,8 @@ export const RightSidebar = () => {
           />
         </div>
       </div>
-      {/* Trending Topics */}
-      <SidebarMenu>
-        {["#Ronaldo", "#Elden Ring", "#EPL", "#Arsenal"].map((topic) => (
-          <SidebarMenuItem key={topic}>
-            <SidebarMenuButton asChild>
-              <a href="#">{topic}</a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        ))}
-      </SidebarMenu>
+      {/* Updated Recommended Blogs Section */}
+      <RecommendedBlogs blogs={uiBlogs.slice(0, 3)} />
 
       {/* Footer Links */}
       <SidebarFooter className="mt-4 text-sm text-gray-500 dark:text-gray-400">

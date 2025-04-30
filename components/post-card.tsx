@@ -10,12 +10,12 @@ import { PostActions } from "./ui/post-actions";
 import { UserAvatar } from "./ui/user-avatar";
 
 export interface Post {
-	id: number;
-	username: string;
-	profilePic: string;
-	postTime: Date;
-	notes: number;
-	isFollowing: boolean;
+    id: number;
+    username: string;
+    profilePic: string | null;
+    postTime: Date;
+    notes: number;
+    isFollowing: boolean;
 
 	postType: "text" | "photo" | "video" | "link";
 	textContent?: string;
