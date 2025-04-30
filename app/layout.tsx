@@ -65,7 +65,7 @@ export default async function RootLayout({
 							<div className="grid grid-cols-1 lg:grid-cols-[14rem_1fr_14rem] gap-0">
 								{/* Left sidebar */}
 								<div className="hidden lg:block sticky top-0 h-screen overflow-hidden border-r">
-									<LeftSidebar />
+									<LeftSidebar user = {user} />
 								</div>
 
 								{/* Main content & Topbar */}
