@@ -1,5 +1,5 @@
 "use client";
-import { LucideCompass, LucideMenu, LucideUsers,Home } from "lucide-react";
+import { LucideCompass, LucideMenu, LucideUsers, Home, User, Settings} from "lucide-react";
 import {
   Sidebar,
   SidebarHeader,
@@ -22,12 +22,23 @@ export function CustomTrigger() {
     </button>
   );
 }
+interface LeftSidebarProps {
+  user?: any; 
+}
 
-export function LeftSidebar() {
-  const links = [
+export function LeftSidebar( { user }: LeftSidebarProps) {
+  const guestlinks = [
     { "label": "Explore", "url": "#", "icon": LucideCompass },
     { "label": "Bar", "url": "#", "icon": LucideUsers }
-  ]
+  ];
+
+  const authLinks = [
+    { "label": "Home", "url": "#", "icon": Home },
+    { "label": "Explore", "url": "#", "icon": LucideCompass },
+    { "label": "Account", "url": "#", "icon": User },
+    { "label": "Settings", "url": "#", "icon": Settings }
+  ];
+  const links = user ? authLinks : guestlinks;
   return (
     <Sidebar collapsible="icon" >
       <SidebarHeader className="text-center">
