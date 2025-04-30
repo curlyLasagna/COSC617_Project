@@ -35,7 +35,29 @@ export const TopBar = ({ routes }: TopBarProps) => {
 
   ];
 
-  const finalRoutes = routes || defaultRoutes;
+    // Routes for home page
+    const homeRoutes = [
+      { label: "For You", href: "/home" },
+      { label: "Following", href: "/home/following" },
+      { label: "Your Tags", href: "/home/tags" },
+    ];
+
+    // Routes for explore page
+    const exploreRoutes = [
+      { label: "Trending", href: "/explore" },
+      { label: "For You", href: "/explore/recommended" },
+      { label: "Staff Picks", href: "/explore/staff-picks" },
+    ];
+
+    // Determine which routes to use
+    const isHomePage = pathname === "/" || pathname.startsWith("/home");
+    const isExplorePage = pathname.startsWith("/explore");
+    
+    const finalRoutes = routes || (
+      isHomePage ? homeRoutes :
+      isExplorePage ? exploreRoutes :
+      defaultRoutes
+    );
 
   return (
     <div className="flex items-center justify-between w-full border-b border-gray-200 dark:border-gray-800 bg-background pt-2 pb-1">

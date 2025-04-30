@@ -1,5 +1,5 @@
 "use client";
-import { LucideCompass, LucideMenu, LucideUsers, Home, User, Settings} from "lucide-react";
+import { LucideCompass, LucideMenu, LucideUsers, Home, Settings} from "lucide-react";
 import {
   Sidebar,
   SidebarHeader,
@@ -9,6 +9,7 @@ import {
   useSidebar,
 } from "./ui/sidebar";
 import { ThemeSwitcher } from "./theme-switcher";
+import { AccountDropdown } from "./account-dropdown";
 
 export function CustomTrigger() {
   const { toggleSidebar } = useSidebar();
@@ -33,12 +34,13 @@ export function LeftSidebar( { user }: LeftSidebarProps) {
   ];
 
   const authLinks = [
-    { "label": "Home", "url": "#", "icon": Home },
-    { "label": "Explore", "url": "#", "icon": LucideCompass },
-    { "label": "Account", "url": "#", "icon": User },
+    { "label": "Home", "url": "/home", "icon": Home },
+    { "label": "Explore", "url": "/explore", "icon": LucideCompass },
     { "label": "Settings", "url": "#", "icon": Settings }
   ];
+
   const links = user ? authLinks : guestlinks;
+
   return (
     <Sidebar collapsible="icon" >
       <SidebarHeader className="text-center">
@@ -55,6 +57,7 @@ export function LeftSidebar( { user }: LeftSidebarProps) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
+        {user && <AccountDropdown />}
         {/* Integrated theme switcher as a button -- wowzers how does she do it?? :O */}
         <SidebarMenuItem>
           <ThemeSwitcher />
