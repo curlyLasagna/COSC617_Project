@@ -12,7 +12,7 @@ import { RecommendedBlogs } from "./recommended-blogs";
 
 export const RightSidebar = () => {
 	return (
-		<div className="hidden lg:flex flex-col h-full pt-4 w-80">
+		<div className="hidden lg:flex flex-col h-full pt-2 w-80">
 			<Sidebar side="right" className="flex-1 w-full">
 				{/* Search Input */}
 				<div className="px-2 pb-3">
