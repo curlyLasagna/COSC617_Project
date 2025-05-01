@@ -1,6 +1,9 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { createPostAction } from "@/utils/posts/create-post-action";
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { TextEditor } from "./text-editor";
 
 const postTypes = [
@@ -31,7 +34,6 @@ const postTypes = [
 ];
 
 interface PostTypeButtonsProps {
-	onSelect: (type: string, content?: any) => void;
 	className?: string;
 	buttonSize?: string;
 	iconSize?: string;
@@ -39,7 +41,6 @@ interface PostTypeButtonsProps {
 }
 
 export function PostTypeButtons({
-	onSelect,
 	className,
 	buttonSize = "h-16 w-16",
 	iconSize = "text-2xl",
@@ -48,8 +49,11 @@ export function PostTypeButtons({
 	const [activeEditor, setActiveEditor] = useState<
 		"text" | "image" | "video" | "link" | null
 	>(null);
+	const [isPending, startTransition] = useTransition();
+	const router = useRouter();
 
 	const handleButtonClick = (type: string) => {
+		if (isPending) return;
 		switch (type) {
 			case "Text":
 				setActiveEditor("text");
@@ -63,9 +67,45 @@ export function PostTypeButtons({
 			case "Link":
 				setActiveEditor("link");
 				break;
-			default:
-				onSelect(type);
 		}
+	};
+
+	const handleSubmit = async (type: string, content: any) => {
+		startTransition(async () => {
+			try {
+				const formData = new FormData();
+				formData.append("postType", type.toLowerCase());
+
+				if (type === "Text") {
+					formData.append("title", content.title || "");
+					formData.append("content", content.content || "");
+				} else {
+					formData.append(
+						"mediaUrl",
+						type === "Photo"
+							? content.imageUrl
+							: type === "Video"
+								? content.videoUrl
+								: content.url,
+					);
+					formData.append("caption", content.caption || "");
+				}
+
+				const result = await createPostAction(formData);
+
+				if (result?.success) {
+					toast.success(result.message);
+					router.refresh();
+				} else {
+					toast.error(result?.message || "Failed to create post");
+				}
+			} catch (error) {
+				console.error("Post creation error:", error);
+				toast.error("An unexpected error occurred");
+			} finally {
+				setActiveEditor(null);
+			}
+		});
 	};
 
 	return (
@@ -75,9 +115,11 @@ export function PostTypeButtons({
 					<button
 						key={type.name}
 						onClick={() => handleButtonClick(type.name)}
+						disabled={isPending}
 						className={cn(
 							"flex flex-col items-center gap-2",
 							"transition-all duration-200 hover:scale-110",
+							isPending && "opacity-50 cursor-not-allowed",
 						)}
 						aria-label={`Create ${type.name} post`}
 					>
@@ -87,6 +129,7 @@ export function PostTypeButtons({
 								"text-white",
 								type.bgColor,
 								buttonSize,
+								isPending && "animate-pulse",
 							)}
 						>
 							<span className={iconSize}>{type.icon}</span>
@@ -103,45 +146,45 @@ export function PostTypeButtons({
 			{/* Text Editor */}
 			<TextEditor
 				isOpen={activeEditor === "text"}
-				onCancel={() => setActiveEditor(null)}
+				onCancel={() => !isPending && setActiveEditor(null)}
 				onSubmit={(content, title) => {
-					onSelect("Text", { content, title });
-					setActiveEditor(null);
+					handleSubmit("Text", { content, title });
 				}}
 				mode="text"
+				isSubmitting={isPending}
 			/>
 
 			{/* Image Editor */}
 			<TextEditor
 				isOpen={activeEditor === "image"}
-				onCancel={() => setActiveEditor(null)}
+				onCancel={() => !isPending && setActiveEditor(null)}
 				onSubmit={(imageUrl, caption) => {
-					onSelect("Photo", { imageUrl, caption });
-					setActiveEditor(null);
+					handleSubmit("Photo", { imageUrl, caption });
 				}}
 				mode="image"
+				isSubmitting={isPending}
 			/>
 
 			{/* Video Editor */}
 			<TextEditor
 				isOpen={activeEditor === "video"}
-				onCancel={() => setActiveEditor(null)}
+				onCancel={() => !isPending && setActiveEditor(null)}
 				onSubmit={(videoUrl, caption) => {
-					onSelect("Video", { videoUrl, caption });
-					setActiveEditor(null);
+					handleSubmit("Video", { videoUrl, caption });
 				}}
 				mode="video"
+				isSubmitting={isPending}
 			/>
 
 			{/* Link Editor */}
 			<TextEditor
 				isOpen={activeEditor === "link"}
-				onCancel={() => setActiveEditor(null)}
+				onCancel={() => !isPending && setActiveEditor(null)}
 				onSubmit={(url, caption) => {
-					onSelect("Link", { url, caption });
-					setActiveEditor(null);
+					handleSubmit("Link", { url, caption });
 				}}
 				mode="link"
+				isSubmitting={isPending}
 			/>
 		</>
 	);

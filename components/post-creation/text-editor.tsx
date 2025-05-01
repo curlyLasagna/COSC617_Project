@@ -16,9 +16,10 @@ const initialValue: Descendant[] = [
 
 interface TextEditorProps {
 	onCancel: () => void;
-	onSubmit: (content: string, metadata?: string) => void;
+	onSubmit: (content: string, caption?: string) => void;
 	isOpen: boolean;
 	mode: "text" | "image" | "video" | "link";
+	isSubmitting?: boolean;
 }
 
 export function TextEditor({
@@ -26,6 +27,7 @@ export function TextEditor({
 	onSubmit,
 	isOpen,
 	mode,
+	isSubmitting = false,
 }: TextEditorProps) {
 	// Editors for different modes
 	const textEditor = useMemo(() => withHistory(withReact(createEditor())), []);
@@ -195,7 +197,11 @@ export function TextEditor({
 					)}
 
 					<div className="flex justify-end space-x-2">
-						<Button variant="outline" onClick={onCancel}>
+						<Button
+							variant="outline"
+							onClick={onCancel}
+							disabled={isSubmitting}
+						>
 							Cancel
 						</Button>
 						<Button
@@ -203,10 +209,11 @@ export function TextEditor({
 							disabled={
 								(mode === "text" && !title.trim()) ||
 								(mode === "link" && !linkUrl.trim()) ||
-								((mode === "image" || mode === "video") && !mediaPreview)
+								((mode === "image" || mode === "video") && !mediaPreview) ||
+								isSubmitting
 							}
 						>
-							Post
+							{isSubmitting ? "Posting..." : "Post"}
 						</Button>
 					</div>
 				</div>
