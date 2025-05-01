@@ -3,16 +3,33 @@ import { createClient } from "../supabase/server";
 
 export default async function likeAction(postId: number) {
 	const supabase = await createClient();
-	let { data: user_id, error: user_err } = await supabase.rpc(
-		"fetch_current_user_id",
-	);
+	try {
+		const {
+			data: { session },
+			error,
+		} = await supabase.auth.getSession();
 
-	if (user_err) console.error(user_err);
+		if (error) throw new Error(error.message);
 
-	const { data, error } = await supabase
-		.from("likes")
-		.insert([{ user_id, post_id: postId }])
-		.select();
+		if (!session) throw new Error("Session is absent, can't get user's id");
+		const user_id = session.user.id;
 
-	if (error) console.error(error);
+		const { data, error: like_err } = await supabase
+			.from("likes")
+			.insert([{ user_id, post_id: postId }])
+			.select();
+
+		if (like_err) throw new Error(like_err.message);
+
+		return {
+			success: true,
+			message: "Successfuly liked",
+		};
+	} catch (error) {
+		return {
+			success: false,
+			message:
+				error instanceof Error ? error.message : "An unknown error occurred",
+		};
+	}
 }
