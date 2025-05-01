@@ -22,7 +22,9 @@ export function CreatePostModal({
 		function handleClickOutside(event: MouseEvent) {
 			if (
 				modalRef.current &&
-				!modalRef.current.contains(event.target as Node)
+				!modalRef.current.contains(event.target as Node) &&
+				!(event.target as HTMLElement).closest(".ProseMirror") &&
+				!(event.target as HTMLElement).closest(".DraftEditor-root")
 			) {
 				onClose();
 			}
