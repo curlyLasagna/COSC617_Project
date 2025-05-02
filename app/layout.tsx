@@ -28,7 +28,7 @@ async function checkUser() {
 	const { data, error } = await supabase.auth.getUser();
 
 	if (error) {
-		console.error("Error getting session:", error);
+		console.log("Error getting session:", error);
 		return null;
 	}
 
@@ -65,7 +65,7 @@ export default async function RootLayout({
 							<div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr_18rem] gap-0">
 								{/* Left sidebar */}
 								<div className="hidden lg:block sticky top-0 h-screen overflow-hidden border-r">
-									<LeftSidebar user = {user} />
+									<LeftSidebar user={user} />
 								</div>
 
 								{/* Main content & Topbar */}
