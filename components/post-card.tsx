@@ -22,6 +22,7 @@ export interface Post {
 	title?: string;
 	mediaUrl?: string;
 	caption?: string;
+	rawTextBody?: string;
 }
 interface PostCardProps {
 	post: Post;
@@ -39,25 +40,37 @@ export const PostCard = ({ post }: PostCardProps) => {
 							alt={post.caption || ""}
 							className="w-full max-h-[500px] object-cover"
 						/>
-						{post.caption && <p className="text-m px-4 py-2">{post.caption}</p>}
+						{post.caption && (
+							<p className="text-m px-4 py-2 whitespace-pre-line">
+								{post.caption}
+							</p>
+						)}
 					</div>
 				);
 			// video posts
 			case "video":
 				return (
 					<div className="space-y-4">
-						{post.textContent && <p>{post.textContent}</p>}
+						{post.textContent && (
+							<p className="whitespace-pre-line">{post.textContent}</p>
+						)}
 						<video controls className="w-full">
 							<source src={post.mediaUrl} />
 						</video>
-						{post.caption && <p className="text-m px-4">{post.caption}</p>}
+						{post.caption && (
+							<p className="text-m px-4 whitespace-pre-line">{post.caption}</p>
+						)}
 					</div>
 				);
 			//link posts
 			case "link":
 				return (
-					<div className="px-4">
-						{post.textContent && <p>{post.textContent}</p>}
+					<div className="px-4 space-y-3">
+						{/* Render caption above the link if it exists */}
+						{post.caption && (
+							<p className="text-m whitespace-pre-line mb-2">{post.caption}</p>
+						)}
+						{/* Link preview */}
 						<a
 							href={post.mediaUrl}
 							target="_blank"

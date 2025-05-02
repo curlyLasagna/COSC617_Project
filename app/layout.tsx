@@ -54,15 +54,15 @@ export default async function RootLayout({
 					<SidebarProvider
 						style={
 							{
-								"--sidebar-width": "14rem",
+								"--sidebar-width": "18rem",
 								"--sidebar-width-mobile": "18rem",
 							} as React.CSSProperties
 						}
 					>
 						<CustomTrigger />
 
-						<div className="mx-auto" style={{ maxWidth: "1200px" }}>
-							<div className="grid grid-cols-1 lg:grid-cols-[14rem_1fr_14rem] gap-0">
+						<div className="mx-auto" style={{ maxWidth: "1400px" }}>
+							<div className="grid grid-cols-1 lg:grid-cols-[18rem_1fr_18rem] gap-0">
 								{/* Left sidebar */}
 								<div className="hidden lg:block sticky top-0 h-screen overflow-hidden border-r">
 									<LeftSidebar user={user} />
