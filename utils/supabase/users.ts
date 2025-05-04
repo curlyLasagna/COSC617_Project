@@ -49,6 +49,47 @@ export const listFollowing = async (): Promise<Following[]> => {
   }));
 };
 
+export const followUser = async (
+  target_account: Following,
+): Promise<string> => {
+  const supabase = await createClient();
+
+  // Get the current user's information
+
+  const { data: userInfo, error: userError } = await supabase.auth.getUser();
+
+  // First, check if the follow relationship already exists
+  const { data: existing, error: checkError } = await supabase
+    .from("follow")
+    .select("*", { count: "exact", head: true })
+    .eq("follower_id", userInfo.user?.id)
+    .eq("followee_id", target_account.followee_id);
+
+  if (checkError) {
+    console.log(checkError);
+    return "Error occurred while checking follow status";
+  }
+
+  if (existing && existing.length > 0) {
+    return `You are already following ${target_account.username}`;
+  }
+
+  // Insert the follow relationship
+  const { error } = await supabase.from("follow").insert([
+    {
+      follower_id: userInfo.user?.id,
+      followee_id: target_account.followee_id,
+      created_at: new Date().toISOString(),
+    },
+  ]);
+
+  if (error) {
+    console.log(error);
+    return "Error occurred while following";
+  }
+
+  return `You are now following ${target_account.username}`;
+};
 export const unfollowUser = async (
   target_account: Following,
 ): Promise<string> => {
@@ -56,7 +97,7 @@ export const unfollowUser = async (
   const { error, count } = await supabase
     .from("follow")
     .delete()
-    .eq("follower_id", target_account.followee_id);
+    .eq("followee_id", target_account.followee_id);
 
   if (error) {
     console.log(error);
