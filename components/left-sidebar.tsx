@@ -43,6 +43,7 @@ export function LeftSidebar({ user }: LeftSidebarProps) {
     { label: "Home", url: "/home", icon: Home },
     { label: "Explore", url: "/explore", icon: LucideCompass },
     { label: "Likes", url: "/likes", icon: LucideUsers },
+    { label: "Followers", url: "/followers", icon: LucideUsers },
     { label: "Settings", url: "#", icon: Settings },
   ];
 
