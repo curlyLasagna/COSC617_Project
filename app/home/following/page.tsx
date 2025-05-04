@@ -12,10 +12,7 @@ export default function FollowingPage() {
   }, []);
   return (
     <div>
-      <FollowingTable />
-      {following.map((e) => (
-        <p key={e.followee_id}>{e.username}</p>
-      ))}
+      <FollowingTable arr={following} />
     </div>
   );
 }
