@@ -23,17 +23,15 @@ export default async function FollowersPage() {
   if (!user) redirect("/sign-in");
 
   const { data, error } = await supabase
-    .from("followers")
+    .from("follow")
     .select(
-      "follower_id, follower:users!followers_follower_id_fkey ( username, full_name, avatar_url )",
+      "follower_id, follower:users!follow_folower_id_fkey ( username, profile_picture_url )",
     )
-    .eq("following_id", user.id);
+    .eq("followee_id", user.id);
 
   const followersData = (data || []).map((entry: any) => ({
     follower_id: entry.follower_id,
-    follower: Array.isArray(entry.follower)
-      ? entry.follower[0]
-      : entry.follower,
+    follower: entry.follower,
   }));
 
   if (error) {
@@ -58,17 +56,15 @@ export default async function FollowersPage() {
               key={follower_id}
               className="border rounded p-4 flex items-center gap-3"
             >
-              {!!follower && follower.avatar_url && (
+              {!!follower && follower.profile_picture_url && (
                 <img
-                  src={follower.avatar_url}
+                  src={follower.profile_picture_url}
                   alt={follower.username}
                   className="w-10 h-10 rounded-full"
                 />
               )}
               <div>
-                <p className="font-semibold">
-                  {follower?.full_name || follower?.username}
-                </p>
+                <p className="font-semibold">{follower?.username}</p>
                 <p className="text-sm text-muted-foreground">
                   @{follower?.username}
                 </p>
