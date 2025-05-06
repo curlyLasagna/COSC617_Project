@@ -36,7 +36,8 @@ export async function GET(request: Request) {
       if (uploadError) {
         console.error("RIP", uploadError);
       } else {
-        const avatarURL = sb.storage.from("pfp").getPublicUrl(avatarFileName);
+        const avatarURL = sb.storage.from("pfp").getPublicUrl(avatarFileName)
+          .data.publicUrl;
         await sb
           .from("users")
           .update({ profile_picture_url: avatarURL })
