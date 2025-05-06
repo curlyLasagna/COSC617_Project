@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ImageIcon, LinkIcon, VideoIcon } from "lucide-react";
 import { useCallback, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { Descendant, createEditor } from "slate";
+import { Descendant, createEditor, string } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, Slate, withReact } from "slate-react";
 
-const initialValue: Descendant[] = [
+type CustomElement = { type: "paragraph"; children: Descendant[] };
+const initialValue: CustomElement[] = [
   {
     type: "paragraph",
     children: [{ text: "" }],

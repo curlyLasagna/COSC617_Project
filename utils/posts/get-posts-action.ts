@@ -60,34 +60,20 @@ export const getPostsAction = async (): Promise<Post[]> => {
     return [];
   }
 
-  const resolvedPosts = await Promise.all(
-    posts.map(async (post) => {
-      const { data: media, error } = await supabase.storage
-        .from("media")
-        .download(post.media_url);
-
-      if (error) {
-        console.error("Error downloading media:", error);
-      }
-
-      return {
-        id: post.post_id,
-        username: post.users.username || "Anonymous",
-        profilePic: post.users.profile_picture_url || null,
-        postTime: new Date(post.date_created || new Date()),
-        notes: 0,
-        isFollowing: user?.id
-          ? post.users?.[0]?.auth_user_id !== user.id
-          : false,
-        postType: post.post_type as "text" | "photo" | "video" | "link",
-        textContent: extractPlainText(post.text_body),
-        title: post.title || undefined,
-        mediaUrl: media as Blob,
-        caption: extractPlainText(post.caption),
-        rawTextBody: post.text_body, // Preserve original for advanced rendering
-      };
-    }),
-  );
-
-  return resolvedPosts;
+  return posts.map((post) => {
+    return {
+      id: post.post_id,
+      username: post.users.username || "Anonymous",
+      profilePic: post.users.profile_picture_url || null,
+      postTime: new Date(post.date_created || new Date()),
+      notes: 0,
+      isFollowing: user?.id ? post.users?.[0]?.auth_user_id !== user.id : false,
+      postType: post.post_type as "text" | "photo" | "video" | "link",
+      textContent: extractPlainText(post.text_body),
+      title: post.title || undefined,
+      mediaUrl: post.media_url,
+      caption: extractPlainText(post.caption),
+      rawTextBody: post.text_body, // Preserve original for advanced rendering
+    };
+  });
 };

@@ -20,7 +20,7 @@ export interface Post {
   postType: "text" | "photo" | "video" | "link";
   textContent?: string;
   title?: string;
-  mediaUrl?: string | Blob;
+  mediaUrl?: string;
   caption?: string;
   rawTextBody?: string;
 }
@@ -30,14 +30,13 @@ interface PostCardProps {
 
 export const PostCard = ({ post }: PostCardProps) => {
   const renderPostContent = () => {
-    const url = URL.createObjectURL(post.mediaUrl as Blob);
     switch (post.postType) {
       //photo posts
       case "photo":
         return (
           <div className="space-y-2">
             <img
-              src={url}
+              src={post.mediaUrl}
               alt={post.caption || ""}
               className="w-full max-h-[500px] object-cover"
             />
@@ -56,7 +55,7 @@ export const PostCard = ({ post }: PostCardProps) => {
               <p className="whitespace-pre-line">{post.textContent}</p>
             )}
             <video controls className="w-full">
-              <source src={url} />
+              <source src={post.mediaUrl} />
             </video>
             {post.caption && (
               <p className="text-m px-4 whitespace-pre-line">{post.caption}</p>
@@ -79,9 +78,7 @@ export const PostCard = ({ post }: PostCardProps) => {
               className="flex items-center gap-2 p-3 border rounded-lg hover:bg-accent"
             >
               <Link className="h-4 w-4" />
-              <span className="truncate">
-                {post.title || (post.mediaUrl as string)}
-              </span>
+              <span className="truncate">{post.title || post.mediaUrl}</span>
             </a>
           </div>
         );
@@ -108,7 +105,6 @@ export const PostCard = ({ post }: PostCardProps) => {
             username: post.username,
             profile_picture_url: "",
           }}
-          profilePic={post.profilePic || ""}
           isFollowing={post.isFollowing}
           postTime={post.postTime}
         />
