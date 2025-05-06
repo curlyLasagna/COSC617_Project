@@ -7,17 +7,15 @@ import { Descendant, createEditor, string } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, Slate, withReact } from "slate-react";
 
-type CustomElement = { type: "paragraph"; children: Descendant[] };
-const initialValue: CustomElement[] = [
+const initialValue: Descendant[] = [
   {
-    type: "paragraph",
     children: [{ text: "" }],
   },
 ];
 
 interface TextEditorProps {
   onCancel: () => void;
-  onSubmit: (content: string | File, caption?: string) => void;
+  onSubmit: (content: string, caption?: string) => void;
   isOpen: boolean;
   mode: "text" | "image" | "video" | "link";
   isSubmitting?: boolean;
@@ -40,16 +38,12 @@ export function TextEditor({
   const [title, setTitle] = useState("");
   const [mediaPreview, setMediaPreview] = useState<string | null>(null);
   const [linkUrl, setLinkUrl] = useState("");
-  const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleMediaUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("handleMediaUpload is being called!", e);
     const file = e.target.files?.[0];
     if (!file) return;
 
-    setFile(file);
-    console.log(file);
     const reader = new FileReader();
     reader.onloadend = () => {
       setMediaPreview(reader.result as string);
@@ -76,9 +70,9 @@ export function TextEditor({
     } else if (mode === "link") {
       const caption = JSON.stringify(captionEditor.children);
       onSubmit(linkUrl, caption);
-    } else if (file) {
+    } else if (mediaPreview) {
       const caption = JSON.stringify(captionEditor.children);
-      onSubmit(file, caption);
+      onSubmit(mediaPreview, caption);
     }
   };
 

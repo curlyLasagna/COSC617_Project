@@ -41,8 +41,11 @@ export const createPostAction = async (formData: FormData) => {
   const postType = formData.get("postType")?.toString();
   const title = formData.get("title")?.toString();
   const content = formData.get("content")?.toString();
+  //   const mediaUrl = formData.get("mediaUrl")?.toString();
   const caption = formData.get("caption")?.toString();
   const file = formData.get("file") as File;
+
+  console.log("File:", file.size, file.type, file.name);
 
   // Validate required fields
   if (!postType) {
@@ -72,17 +75,13 @@ export const createPostAction = async (formData: FormData) => {
     };
   }
 
-  const {
-    data: { publicUrl: media_url },
-  } = supabase.storage.from("media").getPublicUrl(data.path);
-
   // Prepare post data for Supabase
   const postInsert = {
     owner_id: user.id,
     user_id: userProfile.user_id,
     text_body: content,
     caption: caption,
-    media_url: media_url,
+    media_url: data.path,
     post_type: postType,
     title: title,
   };
@@ -105,8 +104,10 @@ export const createPostAction = async (formData: FormData) => {
   // Format the response for PostCard component
   const formattedPost: Post = {
     id: insertedPost.post_id,
-    username: userProfile.username || "Anonymous",
-    profilePic: userProfile.profile_picture_url || null,
+    users: {
+      username: userProfile.username || "Anonymous",
+      profile_picture_url: userProfile.profile_picture_url || null,
+    },
     postTime: new Date(insertedPost.date_created || new Date()),
     notes: 0,
     isFollowing: false,

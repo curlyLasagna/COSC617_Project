@@ -11,8 +11,10 @@ import { UserAvatar } from "./ui/user-avatar";
 
 export interface Post {
   id: number;
-  username: string;
-  profilePic: string | null;
+  users: {
+    username: string;
+    profile_picture_url: string | null;
+  };
   postTime: Date;
   notes: number;
   isFollowing: boolean;
@@ -72,7 +74,7 @@ export const PostCard = ({ post }: PostCardProps) => {
             )}
             {/* Link preview */}
             <a
-              href={post.mediaUrl as string}
+              href={post.mediaUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 p-3 border rounded-lg hover:bg-accent"
@@ -102,7 +104,7 @@ export const PostCard = ({ post }: PostCardProps) => {
       <CardHeader className="px-4 pb-2 pt-4">
         <UserAvatar
           user={{
-            username: post.username,
+            username: post.users.username,
             profile_picture_url: "",
           }}
           isFollowing={post.isFollowing}
