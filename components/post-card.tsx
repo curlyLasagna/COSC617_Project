@@ -73,13 +73,15 @@ export const PostCard = ({ post }: PostCardProps) => {
             )}
             {/* Link preview */}
             <a
-              href={url}
+              href={post.mediaUrl as string}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 p-3 border rounded-lg hover:bg-accent"
             >
               <Link className="h-4 w-4" />
-              <span className="truncate">{post.title || post.mediaUrl}</span>
+              <span className="truncate">
+                {post.title || (post.mediaUrl as string)}
+              </span>
             </a>
           </div>
         );
