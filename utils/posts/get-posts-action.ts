@@ -79,14 +79,7 @@ export const getPostsAction = async (): Promise<Post[]> => {
 
   const resolvedPosts = await Promise.all(
     posts.map(async (post) => {
-      //   const { data: media, error } = await supabase.storage
-      //     .from("media")
-      //     .download(post.media_url);
-
-      //   if (error) {
-      //     console.error("Error downloading media:", error);
-      //   }
-      const user = post.users[0];
+      const user = Array.isArray(post.users) ? post.users[0] : post.users;
       return {
         id: post.post_id,
         users: {
