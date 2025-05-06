@@ -104,7 +104,7 @@ export const PostCard = ({ post }: PostCardProps) => {
       <CardHeader className="px-4 pb-2 pt-4">
         <UserAvatar
           user={{
-            username: post.username,
+            username: post.users.username,
             profile_picture_url: "",
           }}
           isFollowing={post.isFollowing}

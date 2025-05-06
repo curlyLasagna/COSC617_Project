@@ -70,20 +70,24 @@ export const getPostsAction = async (): Promise<Post[]> => {
       //   if (error) {
       //     console.error("Error downloading media:", error);
       //   }
-
+      const user = post.users[0];
       return {
         id: post.post_id,
-        username: post.users.username || "Anonymous",
-        profilePic: post.users.profile_picture_url || null,
+        users: {
+          username: user.username || "Anonymous",
+          profile_picture_url: user.profile_picture_url || null,
+        },
         postTime: new Date(post.date_created || new Date()),
         notes: 0,
-        isFollowing: user?.id ? post.users?.auth_user_id !== user.id : false,
+        isFollowing: user?.auth_user_id
+          ? user?.auth_user_id !== user.auth_user_id
+          : false,
         postType: post.post_type as "text" | "photo" | "video" | "link",
         textContent: extractPlainText(post.text_body),
         title: post.title || undefined,
         mediaUrl: post.media_url,
         caption: extractPlainText(post.caption),
-        rawTextBody: post.text_body, // Preserve original for advanced rendering
+        rawTextBody: post.text_body,
       };
     }),
   );

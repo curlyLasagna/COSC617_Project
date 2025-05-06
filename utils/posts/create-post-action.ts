@@ -105,8 +105,10 @@ export const createPostAction = async (formData: FormData) => {
   // Format the response for PostCard component
   const formattedPost: Post = {
     id: insertedPost.post_id,
-    username: userProfile.username || "Anonymous",
-    profilePic: userProfile.profile_picture_url || null,
+    users: {
+      username: userProfile.username || "Anonymous",
+      profile_picture_url: userProfile.profile_picture_url || null,
+    },
     postTime: new Date(insertedPost.date_created || new Date()),
     notes: 0,
     isFollowing: false,
