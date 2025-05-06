@@ -53,20 +53,25 @@ export default async function LikesPage() {
     console.error("Error fetching posts:", error);
     return [];
   }
-  const posts = likedPosts.map((post) => ({
-    id: post.post_id,
-    username: post.users?.username || "Anonymous",
-    profilePic: post.users?.profile_picture_url || null,
-    postTime: new Date(post.date_created || new Date()),
-    notes: 0,
-    isFollowing: user?.id ? post.users?.auth_user_id !== user.id : false,
-    postType: post.post_type as "text" | "photo" | "video" | "link",
-    textContent: extractPlainText(post.text_body),
-    title: post.title || undefined,
-    mediaUrl: post.media_url || undefined,
-    caption: extractPlainText(post.caption),
-    rawTextBody: post.text_body, // Preserve original for advanced rendering
-  }));
+  const posts = likedPosts.map((post) => {
+    const post_user = Array.isArray(post.users) ? post.users[0] : post.users;
+    return {
+      id: post.post_id,
+      users: {
+        username: post_user.username || "Anonymous",
+        profile_picture_url: post_user.profile_picture_url || null,
+      },
+      postTime: new Date(post.date_created || new Date()),
+      notes: 0,
+      isFollowing: user?.id ? post_user.auth_user_id !== user.id : false,
+      postType: post.post_type as "text" | "photo" | "video" | "link",
+      textContent: extractPlainText(post.text_body),
+      title: post.title || undefined,
+      mediaUrl: post.media_url || undefined,
+      caption: extractPlainText(post.caption),
+      rawTextBody: post.text_body, // Preserve original for advanced rendering
+    };
+  });
 
   return (
     <div className="flex flex-col gap-8 w-full p-4">
