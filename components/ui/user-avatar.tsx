@@ -1,45 +1,66 @@
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { UserPlus, Ellipsis } from "lucide-react";
+import { Ellipsis, UserPlus } from "lucide-react";
 import Link from "next/link";
 
 interface UserAvatarProps {
-  user: {
-    username: string;
-    profile_picture_url: string | null;
+  user?: {
+    username?: string | null;
+    profile_picture_url?: string | null;
   };
-  profilePic: string;
-  isFollowing: boolean;
-  postTime: Date;
+  isFollowing?: boolean;
+  postTime?: Date | string;
 }
 
-export const UserAvatar = ({ user, isFollowing, postTime}: UserAvatarProps) => {
-  const formattedDate = postTime.toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  });
+export const UserAvatar = ({
+  user = {},
+  isFollowing = false,
+  postTime = new Date(),
+}: UserAvatarProps) => {
+  // Safely handle postTime (could be Date object or string)
+  const formattedDate =
+    postTime instanceof Date
+      ? postTime.toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        })
+      : new Date(postTime).toLocaleDateString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+        });
+
+  // Safely handle user data
+  const username = user?.username || "Anonymous";
+  const profilePic = user?.profile_picture_url || null;
+  const fallbackInitial = username.charAt(0).toUpperCase();
 
   return (
     <div className="flex justify-between items-start w-full">
-      <Link href={user.username} className="flex gap-3 items-center">
+      <Link
+        href={`/${username}`}
+        className="flex gap-3 items-center"
+        onClick={(e) => !username && e.preventDefault()} // Prevent navigation if no username
+      >
         <Avatar className="h-10 w-10">
-           <AvatarImage src={user.profile_picture_url || ''} />
-          <AvatarFallback>
-            {user.username.charAt(0).toUpperCase()}
-          </AvatarFallback>
+          <AvatarImage src={profilePic || ""} />
+          <AvatarFallback>{fallbackInitial}</AvatarFallback>
         </Avatar>
         <div>
-        <p className="font-semibold hover:underline">{user.username}</p>
-        {formattedDate && (
+          <p className="font-semibold hover:underline">{username}</p>
           <p className="text-xs text-muted-foreground">{formattedDate}</p>
-        )}
-      </div>
+        </div>
       </Link>
 
       <div className="flex gap-2">
         {!isFollowing && (
-          <Button variant="outline" size="sm" className="gap-1 bg-white/10 rounded-full">
+          <Button
+            variant="outline"
+            size="sm"
+            className="gap-1 bg-white/10 rounded-full"
+          >
             <UserPlus className="h-4 w-4" />
             Follow
           </Button>
