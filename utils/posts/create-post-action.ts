@@ -1,4 +1,3 @@
-// app/actions/posts.ts
 "use server";
 
 import { randomUUID } from "crypto";

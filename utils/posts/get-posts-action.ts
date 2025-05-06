@@ -20,6 +20,22 @@ function extractPlainText(richText?: string | null): string | undefined {
         .filter(Boolean) // Remove empty strings
         .join("\n\n"); // Double newline between paragraphs
     }
+  } catch {
+    return richText; // Fallback for invalid JSON
+  }
+  try {
+    const content = JSON.parse(richText);
+    if (Array.isArray(content)) {
+      return content
+        .map((block) => {
+          if (block.type === "paragraph" && block.children) {
+            return block.children.map((child: any) => child.text).join("");
+          }
+          return "";
+        })
+        .filter(Boolean) // Remove empty strings
+        .join("\n\n"); // Double newline between paragraphs
+    }
     return richText; // Fallback for non-array JSON
   } catch {
     return richText; // Fallback for invalid JSON
