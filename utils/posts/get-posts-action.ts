@@ -2,29 +2,7 @@
 
 import { Post } from "@/components/post-card";
 import { createClient } from "@/utils/supabase/server";
-
-// Helper function to extract plain text from rich text JSON
-function extractPlainText(richText?: string | null): string | undefined {
-  if (!richText) return undefined;
-
-  try {
-    const content = JSON.parse(richText);
-    if (Array.isArray(content)) {
-      return content
-        .map((block) => {
-          if (block.type === "paragraph" && block.children) {
-            return block.children.map((child: any) => child.text).join("");
-          }
-          return "";
-        })
-        .filter(Boolean) // Remove empty strings
-        .join("\n\n"); // Double newline between paragraphs
-    }
-    return richText; // Fallback for non-array JSON
-  } catch {
-    return richText; // Fallback for invalid JSON
-  }
-}
+import { extractPlainText } from "./extract-plain-text";
 
 export const getPostsAction = async (): Promise<Post[]> => {
   const supabase = await createClient();
@@ -35,7 +13,8 @@ export const getPostsAction = async (): Promise<Post[]> => {
 
   const { data: posts, error } = await supabase
     .from("posts")
-    .select(`
+    .select(
+      `
       post_id,
       text_body,
       caption,
@@ -50,7 +29,8 @@ export const getPostsAction = async (): Promise<Post[]> => {
         profile_picture_url,
         auth_user_id
       )
-    `)
+    `,
+    )
     .order("date_created", { ascending: false });
 
   if (error) {
