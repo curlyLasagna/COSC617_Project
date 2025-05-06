@@ -12,7 +12,7 @@ export default async function LikesPage() {
   const { data: likedPostIds } = await supabase
     .from("likes")
     .select("post_id")
-    .eq("user_id", user.id);
+    .eq("auth_user_id", user.id);
 
   if (!likedPostIds || likedPostIds.length === 0) {
     return (
