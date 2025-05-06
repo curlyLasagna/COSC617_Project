@@ -9,7 +9,7 @@ export default async function LikesPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) redirect("/sign-in");
+  if (!user) redirect("/");
 
   const { data: likedPostIds } = await supabase
     .from("likes")
