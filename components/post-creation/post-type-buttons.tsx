@@ -81,11 +81,11 @@ export function PostTypeButtons({
           formData.append("content", content.content || "");
         } else {
           formData.append(
-            "mediaUrl",
+            "file",
             type === "Photo"
-              ? content.imageUrl
+              ? content.image
               : type === "Video"
-                ? content.videoUrl
+                ? content.video
                 : content.url,
           );
           formData.append("caption", content.caption || "");
@@ -158,8 +158,8 @@ export function PostTypeButtons({
       <TextEditor
         isOpen={activeEditor === "image"}
         onCancel={() => !isPending && setActiveEditor(null)}
-        onSubmit={(imageUrl, caption) => {
-          handleSubmit("Photo", { imageUrl, caption });
+        onSubmit={(image, caption) => {
+          handleSubmit("Photo", { image, caption });
         }}
         mode="image"
         isSubmitting={isPending}
@@ -169,8 +169,8 @@ export function PostTypeButtons({
       <TextEditor
         isOpen={activeEditor === "video"}
         onCancel={() => !isPending && setActiveEditor(null)}
-        onSubmit={(videoUrl, caption) => {
-          handleSubmit("Video", { videoUrl, caption });
+        onSubmit={(video, caption) => {
+          handleSubmit("Video", { video, caption });
         }}
         mode="video"
         isSubmitting={isPending}
