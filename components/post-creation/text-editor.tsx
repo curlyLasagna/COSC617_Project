@@ -9,7 +9,6 @@ import { Editable, Slate, withReact } from "slate-react";
 
 const initialValue: Descendant[] = [
   {
-    type: "paragraph",
     children: [{ text: "" }],
   },
 ];
