@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@dicebear/collection':
+        specifier: ^9.2.2
+        version: 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/core':
+        specifier: ^9.2.2
+        version: 9.2.2
+      '@radix-ui/react-avatar':
+        specifier: ^1.1.3
+        version: 1.1.3(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-checkbox':
         specifier: ^1.1.1
         version: 1.1.4(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -47,6 +56,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      date-fns:
+        specifier: ^4.1.0
+        version: 4.1.0
       lucide-react:
         specifier: ^0.468.0
         version: 0.468.0(react@19.0.0)
@@ -65,6 +77,18 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
+      slate:
+        specifier: ^0.114.0
+        version: 0.114.0
+      slate-history:
+        specifier: ^0.113.1
+        version: 0.113.1(slate@0.114.0)
+      slate-react:
+        specifier: ^0.114.2
+        version: 0.114.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(slate-dom@0.114.0(slate@0.114.0))(slate@0.114.0)
+      sonner:
+        specifier: ^2.0.3
+        version: 2.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@types/node':
         specifier: 22.10.2
@@ -75,6 +99,9 @@ importers:
       '@types/react-dom':
         specifier: 19.0.2
         version: 19.0.2(@types/react@19.0.10)
+      lefthook:
+        specifier: ^1.11.6
+        version: 1.11.6
       postcss:
         specifier: 8.4.49
         version: 8.4.49
@@ -96,6 +123,196 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@dicebear/adventurer-neutral@9.2.2':
+    resolution: {integrity: sha512-XVAjhUWjav6luTZ7txz8zVJU/H0DiUy4uU1Z7IO5MDO6kWvum+If1+0OUgEWYZwM+RDI7rt2CgVP910DyZGd1w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/adventurer@9.2.2':
+    resolution: {integrity: sha512-WjBXCP9EXbUul2zC3BS2/R3/4diw1uh/lU4jTEnujK1mhqwIwanFboIMzQsasNNL/xf+m3OHN7MUNJfHZ1fLZA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/avataaars-neutral@9.2.2':
+    resolution: {integrity: sha512-pRj16P27dFDBI3LtdiHUDwIXIGndHAbZf5AxaMkn6/+0X93mVQ/btVJDXyW0G96WCsyC88wKAWr6/KJotPxU6Q==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/avataaars@9.2.2':
+    resolution: {integrity: sha512-WqJPQEt0OhBybTpI0TqU1uD1pSk9M2+VPIwvBye/dXo46b+0jHGpftmxjQwk6tX8z0+mRko8pwV5n+cWht1/+w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/big-ears-neutral@9.2.2':
+    resolution: {integrity: sha512-IPHt8fi3dv9cyfBJBZ4s8T+PhFCrQvOCf91iRHBT3iOLNPdyZpI5GNLmGiV0XMAvIDP5NvA5+f6wdoBLhYhbDA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/big-ears@9.2.2':
+    resolution: {integrity: sha512-hz4UXdPq4qqZpu0YVvlqM4RDFhk5i0WgPcuwj/MOLlgTjuj63uHUhCQSk6ZiW1DQOs12qpwUBMGWVHxBRBas9g==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/big-smile@9.2.2':
+    resolution: {integrity: sha512-D4td0GL8or1nTNnXvZqkEXlzyqzGPWs3znOnm1HIohtFTeIwXm72Ob2lNDsaQJSJvXmVlwaQQ0CCTvyCl8Stjw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/bottts-neutral@9.2.2':
+    resolution: {integrity: sha512-lSgpqmSJtlnyxVuUgNdBwyzuA0O9xa5zRJtz7x2KyWbicXir5iYdX0MVMCkp1EDvlcxm9rGJsclktugOyakTlw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/bottts@9.2.2':
+    resolution: {integrity: sha512-wugFkzw8JNWV1nftq/Wp/vmQsLAXDxrMtRK3AoMODuUpSVoP3EHRUfKS043xggOsQFvoj0HZ7kadmhn0AMLf5A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/collection@9.2.2':
+    resolution: {integrity: sha512-vZAmXhPWCK3sf8Fj9/QflFC6XOLroJOT5K1HdnzHaPboEvffUQideGCrrEamnJtlH0iF0ZDXh8gqmwy2fu+yHA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/core@9.2.2':
+    resolution: {integrity: sha512-ROhgHG249dPtcXgBHcqPEsDeAPRPRD/9d+tZCjLYyueO+cXDlIA8dUlxpwIVcOuZFvCyW6RJtqo8BhNAi16pIQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@dicebear/croodles-neutral@9.2.2':
+    resolution: {integrity: sha512-/4mNirxoQ+z1kHXnpDRbJ1JV1ZgXogeTeNp0MaFYxocCgHfJ7ckNM23EE1I7akoo9pqPxrKlaeNzGAjKHdS9vA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/croodles@9.2.2':
+    resolution: {integrity: sha512-OzvAXQWsOgMwL3Sl+lBxCubqSOWoBJpC78c4TKnNTS21rR63TtXUyVdLLzgKVN4YHRnvMgtPf8F/W9YAgIDK4w==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/dylan@9.2.2':
+    resolution: {integrity: sha512-s7e3XliC1YXP+Wykj+j5kwdOWFRXFzYHYk/PB4oZ1F3sJandXiG0HS4chaNu4EoP0yZgKyFMUVTGZx+o6tMaYg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/fun-emoji@9.2.2':
+    resolution: {integrity: sha512-M+rYTpB3lfwz18f+/i+ggNwNWUoEj58SJqXJ1wr7Jh/4E5uL+NmJg9JGwYNaVtGbCFrKAjSaILNUWGQSFgMfog==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/glass@9.2.2':
+    resolution: {integrity: sha512-imCMxcg+XScHYtQq2MUv1lCzhQSCUglMlPSezKEpXhTxgbgUpmGlSGVkOfmX5EEc7SQowKkF1W/1gNk6CXvBaQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/icons@9.2.2':
+    resolution: {integrity: sha512-Tqq2OVCdS7J02DNw58xwlgLGl40sWEckbqXT3qRvIF63FfVq+wQZBGuhuiyAURcSgvsc3h2oQeYFi9iXh7HTOA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/identicon@9.2.2':
+    resolution: {integrity: sha512-POVKFulIrcuZf3rdAgxYaSm2XUg/TJg3tg9zq9150reEGPpzWR7ijyJ03dzAADPzS3DExfdYVT9+z3JKwwJnTQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/initials@9.2.2':
+    resolution: {integrity: sha512-/xNnsEmsstWjmF77htAOuwOMhFlP6eBVXgcgFlTl/CCH/Oc6H7t0vwX1he8KLQBBzjGpvJcvIAn4Wh9rE4D5/A==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/lorelei-neutral@9.2.2':
+    resolution: {integrity: sha512-Eys9Os6nt2Xll7Mvu66CfRR2YggTopWcmFcRZ9pPdohS96kT0MsLI2iTcfZXQ51K8hvT3IbwoGc86W8n0cDxAQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/lorelei@9.2.2':
+    resolution: {integrity: sha512-koXqVr/vcWUPo00VP5H6Czsit+uF1tmwd2NK7Q/e34/9Sd1f4QLLxHjjBNm/iNjCI1+UNTOvZ2Qqu0N5eo7Flw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/micah@9.2.2':
+    resolution: {integrity: sha512-NCajcJV5yw8uMKiACp694w1T/UyYme2CUEzyTzWHgWnQ+drAuCcH8gpAoLWd67viNdQB/MTpNlaelUgTjmI4AQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/miniavs@9.2.2':
+    resolution: {integrity: sha512-vvkWXttdw+KHF3j+9qcUFzK+P0nbNnImGjvN48wwkPIh2h08WWFq0MnoOls4IHwUJC4GXBjWtiyVoCxz6hhtOA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/notionists-neutral@9.2.2':
+    resolution: {integrity: sha512-AhOzk+lz6kB4uxGun8AJhV+W1nttnMlxmxd+5KbQ/txCIziYIaeD3il44wsAGegEpGFvAZyMYtR/jjfHcem3TA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/notionists@9.2.2':
+    resolution: {integrity: sha512-Z9orRaHoj7Y9Ap4wEu8XOrFACsG1KbbBQUPV1R50uh6AHwsyNrm4cS84ICoGLvxgLNHHOae3YCjd8aMu2z19zg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/open-peeps@9.2.2':
+    resolution: {integrity: sha512-6PeQDHYyjvKrGSl/gP+RE5dSYAQGKpcGnM65HorgyTIugZK7STo0W4hvEycedupZ3MCCEH8x/XyiChKM2sHXog==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/personas@9.2.2':
+    resolution: {integrity: sha512-705+ObNLC0w1fcgE/Utav+8bqO+Esu53TXegpX5j7trGEoIMf2bThqJGHuhknZ3+T2az3Wr89cGyOGlI0KLzLA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/pixel-art-neutral@9.2.2':
+    resolution: {integrity: sha512-CdUY77H6Aj7dKLW3hdkv7tu0XQJArUjaWoXihQxlhl3oVYplWaoyu9omYy5pl8HTqs8YgVTGljjMXYoFuK0JUw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/pixel-art@9.2.2':
+    resolution: {integrity: sha512-BvbFdrpzQl04+Y9UsWP63YGug+ENGC7GMG88qbEFWxb/IqRavGa4H3D0T4Zl2PSLiw7f2Ctv98bsCQZ1PtCznQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/rings@9.2.2':
+    resolution: {integrity: sha512-eD1J1k364Arny+UlvGrk12HP/XGG6WxPSm4BarFqdJGSV45XOZlwqoi7FlcMr9r9yvE/nGL8OizbwMYusEEdjw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/shapes@9.2.2':
+    resolution: {integrity: sha512-e741NNWBa7fg0BjomxXa0fFPME2XCIR0FA+VHdq9AD2taTGHEPsg5x1QJhCRdK6ww85yeu3V3ucpZXdSrHVw5Q==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
+
+  '@dicebear/thumbs@9.2.2':
+    resolution: {integrity: sha512-FkPLDNu7n5kThLSk7lR/0cz/NkUqgGdZGfLZv6fLkGNGtv6W+e2vZaO7HCXVwIgJ+II+kImN41zVIZ6Jlll7pQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      '@dicebear/core': ^9.0.0
 
   '@emnapi/runtime@1.3.1':
     resolution: {integrity: sha512-kEBmG8KyqtxJZv+ygbEim+KCGtIq1fC22Ms3S4ziXmYKm8uyoLX0MHONVKwp+9opg390VaKRNt4a7A9NwmpNhw==}
@@ -242,6 +459,9 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
+  '@juggle/resize-observer@3.4.0':
+    resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
+
   '@next/env@15.1.7':
     resolution: {integrity: sha512-d9jnRrkuOH7Mhi+LHav2XW91HOgTAWHxjMPkXMGBc9B2b7614P7kjt8tAplRvJpbSt4nbO1lugcT/kAaWzjlLQ==}
 
@@ -314,6 +534,19 @@ packages:
 
   '@radix-ui/react-arrow@1.1.2':
     resolution: {integrity: sha512-G+KcpzXHq24iH0uGG/pF8LyzpFJYGD4RfLjCIBfGdSLXvjLHST31RUiRVrupIBMvIppMgSzQ6l66iAxl03tdlg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-avatar@1.1.3':
+    resolution: {integrity: sha512-Paen00T4P8L8gd9bNsRMw7Cbaz85oxiv+hzomsRZgFm2byltPFDtfcoqlWJ8GyZlIBWgLssJlzLCnKU0G0302g==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -702,6 +935,9 @@ packages:
   '@types/cookie@0.6.0':
     resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
 
+  '@types/json-schema@7.0.15':
+    resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
   '@types/node@22.10.2':
     resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
 
@@ -818,6 +1054,9 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
+  compute-scroll-into-view@3.1.1:
+    resolution: {integrity: sha512-VRhuHOLoKYOy4UbilLbUzbYg93XLjv2PncJC50EuTWPA3gaja1UjBsUP/D/9/juV3vQFr6XBEzn9KCAHdUvOHw==}
+
   cookie@0.7.2:
     resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
@@ -834,6 +1073,9 @@ packages:
   csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
 
+  date-fns@4.1.0:
+    resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
@@ -843,6 +1085,10 @@ packages:
 
   didyoumean@1.2.2:
     resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
+
+  direction@1.0.4:
+    resolution: {integrity: sha512-GYqKi1aH7PJXxdhTeZBFrg8vUBeKXi+cNprXsC1kpJcbcVnV9wBsrOu1cQEdG0WeQwlfHiy3XvnKfIrJ2R0NzQ==}
+    hasBin: true
 
   dlv@1.1.3:
     resolution: {integrity: sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==}
@@ -909,6 +1155,9 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
+  immer@10.1.1:
+    resolution: {integrity: sha512-s2MPrmjovJcoMaHtx6K11Ra7oD05NT97w1IC5zpMkT6Atjr7H8LjaDd81iIxUYpMKSRRNMJE703M1Fhr/TctHw==}
+
   is-arrayish@0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
 
@@ -932,9 +1181,16 @@ packages:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
     engines: {node: '>=0.10.0'}
 
+  is-hotkey@0.2.0:
+    resolution: {integrity: sha512-UknnZK4RakDmTgz4PI1wIph5yxSs/mvChWs9ifnlXsKuXgWmOkY/hAE0H/k2MIqH0RlRye0i1oC07MCRSD28Mw==}
+
   is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
+
+  is-plain-object@5.0.0:
+    resolution: {integrity: sha512-VRSzKkbMm5jMDoKLbltAkFQ5Qr7VDiTFGXxYFXXowVj387GeGNOCsOH6Msy00SGZ3Fp84b1Naa1psqgcCIEP5Q==}
+    engines: {node: '>=0.10.0'}
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
@@ -946,12 +1202,69 @@ packages:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
 
+  lefthook-darwin-arm64@1.11.6:
+    resolution: {integrity: sha512-gWgdWrKgZgX+bKc6Vs/x7JkO+58lLOpRzpteLx//82D0MKVPlNZwjd4zz4AbIBXtM4Hcj+6gSsOzQ7QDXxjVvQ==}
+    cpu: [arm64]
+    os: [darwin]
+
+  lefthook-darwin-x64@1.11.6:
+    resolution: {integrity: sha512-Ia0TjTKuYcSaDTuoCnbWtpPZ2VEoKzgn33OB90VjNaSVs4ooE0PIdpO+w00x1elqIaf1pbrpq6HgeB26Du8KbQ==}
+    cpu: [x64]
+    os: [darwin]
+
+  lefthook-freebsd-arm64@1.11.6:
+    resolution: {integrity: sha512-PxIwj+hmjLahyzEmcIfalIBDhgklAQCavwM4sGCgbzDi4/+VQX+4aEs4pQqtd7v3aohmjtO/4n2emzTI8donww==}
+    cpu: [arm64]
+    os: [freebsd]
+
+  lefthook-freebsd-x64@1.11.6:
+    resolution: {integrity: sha512-3o1lMKxz1VtWaP/o117wgUn3ZOpefMoSf+8LuiTzI3/PDprIuzgyw2nXKlBZAMDpNPHMNnJeQNts9XLMRmkldg==}
+    cpu: [x64]
+    os: [freebsd]
+
+  lefthook-linux-arm64@1.11.6:
+    resolution: {integrity: sha512-nKPFZ5cA9f5tVn0ybDVqcXXlpTHZqo05N4KQRhWTj5Nem+JoD2YzJIlvZhdJhUrldERqj6deDMXChH5T3z4Rrw==}
+    cpu: [arm64]
+    os: [linux]
+
+  lefthook-linux-x64@1.11.6:
+    resolution: {integrity: sha512-naN8dllLCOEeP+wznLnq+oXrs1dvt/iMLkcl+pOPWLqFccPfDiHzr8V8GslaTa+rSFsAnvjR7SJIOi5C29xedA==}
+    cpu: [x64]
+    os: [linux]
+
+  lefthook-openbsd-arm64@1.11.6:
+    resolution: {integrity: sha512-dPxhJfYQ667T+U3pz1+O3mTRNHzXH/BvPlXSH+oy8uiSry4AtVNRXkVvXPUcpLlrAy6HuFYodsrpCIlWFeYwiQ==}
+    cpu: [arm64]
+    os: [openbsd]
+
+  lefthook-openbsd-x64@1.11.6:
+    resolution: {integrity: sha512-9D26kcSsjiW4D0AuVDdi+0ZqrsOzRWOpMS/kcUbLfrU99yCvma0rMTqKbbDMkVur/znS7qL53oGahXCXDNA+IQ==}
+    cpu: [x64]
+    os: [openbsd]
+
+  lefthook-windows-arm64@1.11.6:
+    resolution: {integrity: sha512-xdCenr4+BFnfBEhiXj6GJp02EPmcwTAGa7NYm6hVTfDwGXw24tuLv7lpnGjgK3kovN6EukgLH1FYkeyDOBEMnA==}
+    cpu: [arm64]
+    os: [win32]
+
+  lefthook-windows-x64@1.11.6:
+    resolution: {integrity: sha512-Fg2GzLhzeDV/GX8+ydrI0wBOytQWpPkNdngx+a8B/feCDbwjAiFklDG5oV4ytuWrtg1JPEEWLJd6nHefj4wtHA==}
+    cpu: [x64]
+    os: [win32]
+
+  lefthook@1.11.6:
+    resolution: {integrity: sha512-j0VmMM50WlPDassmgvapRum9po29Tv1BXzBNFpzGkk9E91CEG9jKik/OHyH/r/na+q8qNIUUyPL6QQuTN/UhQQ==}
+    hasBin: true
+
   lilconfig@3.1.3:
     resolution: {integrity: sha512-/vlFKAoH5Cgt3Ie+JLhRbwOsCQePABiU3tJ1egGvyQ+33R/vcwM2Zl2QR/LzjsBeItPt3oSVXapn+m4nQDvpzw==}
     engines: {node: '>=14'}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
+
+  lodash@4.17.21:
+    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
@@ -1174,6 +1487,9 @@ packages:
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
+  scroll-into-view-if-needed@3.1.0:
+    resolution: {integrity: sha512-49oNpRjWRvnU8NyGVmUaYG4jtTkNonFZI86MmGRDqBphEK2EXT9gdEUoQPZhuBM8yWHxCWbobltqYO5M4XrUvQ==}
+
   semver@7.7.1:
     resolution: {integrity: sha512-hlq8tAfn0m/61p4BVRcPzIGr6LKiMwo4VM6dGi6pt4qcRkmNzTcWq6eCEjEh+qXjkMDvPlOFFSGwQjoEa6gyMA==}
     engines: {node: '>=10'}
@@ -1197,6 +1513,33 @@ packages:
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
+
+  slate-dom@0.114.0:
+    resolution: {integrity: sha512-3LWIfiDPNQSY+SCPsvMTErCkx2gXTViLoWISisw6uM+unwiOkEF9ZmpHp88/SSmcq6k3P4aIquehUNeNUlkdiA==}
+    peerDependencies:
+      slate: '>=0.99.0'
+
+  slate-history@0.113.1:
+    resolution: {integrity: sha512-J9NSJ+UG2GxoW0lw5mloaKcN0JI0x2IA5M5FxyGiInpn+QEutxT1WK7S/JneZCMFJBoHs1uu7S7e6pxQjubHmQ==}
+    peerDependencies:
+      slate: '>=0.65.3'
+
+  slate-react@0.114.2:
+    resolution: {integrity: sha512-yqJnX1/7A30szl9BxW3qX99MZy6mM6VtUi1rXTy0JpRMTKv3rduo0WOxqcX90tpt0ke2pzHGbrLLr1buIN4vrw==}
+    peerDependencies:
+      react: '>=18.2.0'
+      react-dom: '>=18.2.0'
+      slate: '>=0.114.0'
+      slate-dom: '>=0.110.2'
+
+  slate@0.114.0:
+    resolution: {integrity: sha512-r3KHl22433DlN5BpLAlL4b3D8ItoGKAkj91YT6GhP39XuLoBT+YFd9ObKuL/okgiPb5lbwnW+71fM45hHceN9w==}
+
+  sonner@2.0.3:
+    resolution: {integrity: sha512-njQ4Hht92m0sMqqHVDL32V2Oun9W1+PHO9NDv9FHfJjT3JT22IG4Jpo3FPQy+mouRKCXFWO+r67v6MrHX2zeIA==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -1263,6 +1606,12 @@ packages:
 
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
+
+  tiny-invariant@1.3.1:
+    resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==}
+
+  tiny-warning@1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
 
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
@@ -1353,6 +1702,164 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@dicebear/adventurer-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/adventurer@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/avataaars-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/avataaars@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/big-ears-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/big-ears@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/big-smile@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/bottts-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/bottts@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/collection@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/adventurer': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/adventurer-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/avataaars': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/avataaars-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/big-ears': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/big-ears-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/big-smile': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/bottts': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/bottts-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/core': 9.2.2
+      '@dicebear/croodles': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/croodles-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/dylan': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/fun-emoji': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/glass': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/icons': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/identicon': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/initials': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/lorelei': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/lorelei-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/micah': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/miniavs': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/notionists': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/notionists-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/open-peeps': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/personas': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/pixel-art': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/pixel-art-neutral': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/rings': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/shapes': 9.2.2(@dicebear/core@9.2.2)
+      '@dicebear/thumbs': 9.2.2(@dicebear/core@9.2.2)
+
+  '@dicebear/core@9.2.2':
+    dependencies:
+      '@types/json-schema': 7.0.15
+
+  '@dicebear/croodles-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/croodles@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/dylan@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/fun-emoji@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/glass@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/icons@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/identicon@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/initials@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/lorelei-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/lorelei@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/micah@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/miniavs@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/notionists-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/notionists@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/open-peeps@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/personas@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/pixel-art-neutral@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/pixel-art@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/rings@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/shapes@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
+
+  '@dicebear/thumbs@9.2.2(@dicebear/core@9.2.2)':
+    dependencies:
+      '@dicebear/core': 9.2.2
 
   '@emnapi/runtime@1.3.1':
     dependencies:
@@ -1477,6 +1984,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
+  '@juggle/resize-observer@3.4.0': {}
+
   '@next/env@15.1.7': {}
 
   '@next/swc-darwin-arm64@15.1.7':
@@ -1523,6 +2032,18 @@ snapshots:
   '@radix-ui/react-arrow@1.1.2(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
       '@radix-ui/react-primitive': 2.0.2(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+    optionalDependencies:
+      '@types/react': 19.0.10
+      '@types/react-dom': 19.0.2(@types/react@19.0.10)
+
+  '@radix-ui/react-avatar@1.1.3(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      '@radix-ui/react-context': 1.1.1(@types/react@19.0.10)(react@19.0.0)
+      '@radix-ui/react-primitive': 2.0.2(@types/react-dom@19.0.2(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@19.0.10)(react@19.0.0)
+      '@radix-ui/react-use-layout-effect': 1.1.0(@types/react@19.0.10)(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     optionalDependencies:
@@ -1919,6 +2440,8 @@ snapshots:
 
   '@types/cookie@0.6.0': {}
 
+  '@types/json-schema@7.0.15': {}
+
   '@types/node@22.10.2':
     dependencies:
       undici-types: 6.20.0
@@ -2037,6 +2560,8 @@ snapshots:
 
   commander@4.1.1: {}
 
+  compute-scroll-into-view@3.1.1: {}
+
   cookie@0.7.2: {}
 
   cross-spawn@7.0.6:
@@ -2049,12 +2574,16 @@ snapshots:
 
   csstype@3.1.3: {}
 
+  date-fns@4.1.0: {}
+
   detect-libc@2.0.3:
     optional: true
 
   detect-node-es@1.1.0: {}
 
   didyoumean@1.2.2: {}
+
+  direction@1.0.4: {}
 
   dlv@1.1.3: {}
 
@@ -2119,6 +2648,8 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
+  immer@10.1.1: {}
+
   is-arrayish@0.3.2:
     optional: true
 
@@ -2138,7 +2669,11 @@ snapshots:
     dependencies:
       is-extglob: 2.1.1
 
+  is-hotkey@0.2.0: {}
+
   is-number@7.0.0: {}
+
+  is-plain-object@5.0.0: {}
 
   isexe@2.0.0: {}
 
@@ -2150,9 +2685,54 @@ snapshots:
 
   jiti@1.21.7: {}
 
+  lefthook-darwin-arm64@1.11.6:
+    optional: true
+
+  lefthook-darwin-x64@1.11.6:
+    optional: true
+
+  lefthook-freebsd-arm64@1.11.6:
+    optional: true
+
+  lefthook-freebsd-x64@1.11.6:
+    optional: true
+
+  lefthook-linux-arm64@1.11.6:
+    optional: true
+
+  lefthook-linux-x64@1.11.6:
+    optional: true
+
+  lefthook-openbsd-arm64@1.11.6:
+    optional: true
+
+  lefthook-openbsd-x64@1.11.6:
+    optional: true
+
+  lefthook-windows-arm64@1.11.6:
+    optional: true
+
+  lefthook-windows-x64@1.11.6:
+    optional: true
+
+  lefthook@1.11.6:
+    optionalDependencies:
+      lefthook-darwin-arm64: 1.11.6
+      lefthook-darwin-x64: 1.11.6
+      lefthook-freebsd-arm64: 1.11.6
+      lefthook-freebsd-x64: 1.11.6
+      lefthook-linux-arm64: 1.11.6
+      lefthook-linux-x64: 1.11.6
+      lefthook-openbsd-arm64: 1.11.6
+      lefthook-openbsd-x64: 1.11.6
+      lefthook-windows-arm64: 1.11.6
+      lefthook-windows-x64: 1.11.6
+
   lilconfig@3.1.3: {}
 
   lines-and-columns@1.2.4: {}
+
+  lodash@4.17.21: {}
 
   lru-cache@10.4.3: {}
 
@@ -2343,6 +2923,10 @@ snapshots:
 
   scheduler@0.25.0: {}
 
+  scroll-into-view-if-needed@3.1.0:
+    dependencies:
+      compute-scroll-into-view: 3.1.1
+
   semver@7.7.1:
     optional: true
 
@@ -2385,6 +2969,47 @@ snapshots:
     dependencies:
       is-arrayish: 0.3.2
     optional: true
+
+  slate-dom@0.114.0(slate@0.114.0):
+    dependencies:
+      '@juggle/resize-observer': 3.4.0
+      direction: 1.0.4
+      is-hotkey: 0.2.0
+      is-plain-object: 5.0.0
+      lodash: 4.17.21
+      scroll-into-view-if-needed: 3.1.0
+      slate: 0.114.0
+      tiny-invariant: 1.3.1
+
+  slate-history@0.113.1(slate@0.114.0):
+    dependencies:
+      is-plain-object: 5.0.0
+      slate: 0.114.0
+
+  slate-react@0.114.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(slate-dom@0.114.0(slate@0.114.0))(slate@0.114.0):
+    dependencies:
+      '@juggle/resize-observer': 3.4.0
+      direction: 1.0.4
+      is-hotkey: 0.2.0
+      is-plain-object: 5.0.0
+      lodash: 4.17.21
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      scroll-into-view-if-needed: 3.1.0
+      slate: 0.114.0
+      slate-dom: 0.114.0(slate@0.114.0)
+      tiny-invariant: 1.3.1
+
+  slate@0.114.0:
+    dependencies:
+      immer: 10.1.1
+      is-plain-object: 5.0.0
+      tiny-warning: 1.0.3
+
+  sonner@2.0.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   source-map-js@1.2.1: {}
 
@@ -2467,6 +3092,10 @@ snapshots:
   thenify@3.3.1:
     dependencies:
       any-promise: 1.3.0
+
+  tiny-invariant@1.3.1: {}
+
+  tiny-warning@1.0.3: {}
 
   to-regex-range@5.0.1:
     dependencies:
