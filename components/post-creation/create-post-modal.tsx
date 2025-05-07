@@ -53,6 +53,7 @@ export function CreatePostModal({
             <X className="h-4 w-4 text-gray-600" />
           </button>
           <PostTypeButtons
+            // onSelect={handleSelect}
             buttonSize="h-24 w-24"
             iconSize="text-4xl"
             className="gap-6"

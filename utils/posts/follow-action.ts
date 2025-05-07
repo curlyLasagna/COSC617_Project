@@ -1,34 +1,34 @@
 "use server";
 import { createClient } from "../supabase/server";
-export default async function follow(followee_id: number) {
-	const supabase = await createClient();
-	try {
-		const {
-			data: { session },
-			error,
-		} = await supabase.auth.getSession();
+export default async function follow(followee_id: string) {
+  const supabase = await createClient();
+  try {
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser();
 
-		if (error) throw new Error(error.message);
+    if (error) throw new Error(error.message);
 
-		if (!session) throw new Error("Session is absent, can't get user's id");
-		const follower_id = session.user.id;
+    if (!user) throw new Error("Not authenicate");
+    const follower_id = user.id;
 
-		const { data, error: follow_err } = await supabase
-			.from("follow")
-			.insert([{ follower_id, followee_id }])
-			.select();
+    const { data, error: follow_err } = await supabase
+      .from("follow")
+      .insert([{ follower_id, followee_id }])
+      .select();
 
-		if (follow_err) throw new Error(follow_err.message);
+    if (follow_err) throw new Error(follow_err.message);
 
-		return {
-			success: true,
-			message: "Successfuly followed",
-		};
-	} catch (error) {
-		return {
-			success: false,
-			message:
-				error instanceof Error ? error.message : "An unknown error occurred",
-		};
-	}
+    return {
+      success: true,
+      message: "Successfuly followed",
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message:
+        error instanceof Error ? error.message : "An unknown error occurred",
+    };
+  }
 }

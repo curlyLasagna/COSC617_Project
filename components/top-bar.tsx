@@ -1,14 +1,14 @@
 "use client";
-import React from "react";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Settings2Icon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Settings2Icon } from "lucide-react";
+import React from "react";
 import { Button } from "./ui/button";
 
 const navigationMenuTriggerStyle = (isActive: boolean) => {
@@ -32,32 +32,28 @@ export const TopBar = ({ routes }: TopBarProps) => {
     { label: "Trending", href: "/" },
     { label: "Staff Picks", href: "/following" },
     { label: "More", href: "/More" },
-
   ];
 
-    // Routes for home page
-    const homeRoutes = [
-      { label: "For You", href: "/home" },
-      { label: "Following", href: "/home/following" },
-      { label: "Your Tags", href: "/home/tags" },
-    ];
+  // Routes for home page
+  const homeRoutes = [
+    { label: "All Posts", href: "/home" },
+    { label: "Following", href: "/home/following" },
+  ];
 
-    // Routes for explore page
-    const exploreRoutes = [
-      { label: "Trending", href: "/explore" },
-      { label: "For You", href: "/explore/recommended" },
-      { label: "Staff Picks", href: "/explore/staff-picks" },
-    ];
+  // Routes for explore page
+  const exploreRoutes = [
+    { label: "Trending", href: "/explore" },
+    { label: "For You", href: "/explore/recommended" },
+    { label: "Staff Picks", href: "/explore/staff-picks" },
+  ];
 
-    // Determine which routes to use
-    const isHomePage = pathname === "/" || pathname.startsWith("/home");
-    const isExplorePage = pathname.startsWith("/explore");
-    
-    const finalRoutes = routes || (
-      isHomePage ? homeRoutes :
-      isExplorePage ? exploreRoutes :
-      defaultRoutes
-    );
+  // Determine which routes to use
+  const isHomePage = pathname === "/" || pathname.startsWith("/home");
+  const isExplorePage = pathname.startsWith("/explore");
+
+  const finalRoutes =
+    routes ||
+    (isHomePage ? homeRoutes : isExplorePage ? exploreRoutes : defaultRoutes);
 
   return (
     <div className="flex items-center justify-between w-full border-b border-gray-200 dark:border-gray-800 bg-background pt-2 pb-1">
@@ -68,7 +64,7 @@ export const TopBar = ({ routes }: TopBarProps) => {
               <Link href={route.href} legacyBehavior passHref>
                 <NavigationMenuLink
                   className={navigationMenuTriggerStyle(
-                    pathname === route.href
+                    pathname === route.href,
                   )}
                 >
                   {route.label}
