@@ -50,7 +50,10 @@ export function AccountDropdown() {
               <StickyNote className="h-4 w-4" />
               <span>My Blog</span>
             </button>
-            <button className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent">
+            <button
+              className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent"
+              onClick={() => router.push("/account/likes")}
+            >
               <Heart className="h-4 w-4" />
               <span>Your Likes</span>
             </button>
