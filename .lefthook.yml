@@ -6,7 +6,7 @@ pre-commit:
     #   stage_fixed: true
     # lint:
     #   glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
-    #   run: pnpm dlx @biomejs/biome lint --apply --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+    #   run: next lint
     #   stage_fixed: true
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
