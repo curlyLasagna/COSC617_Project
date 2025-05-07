@@ -42,12 +42,13 @@ function extractPlainText(richText?: string | null): string | undefined {
   }
 }
 
-export const getPostsAction = async (): Promise<Post[]> => {
+export const getPostsAction = async (user_id?: string): Promise<Post[]> => {
   const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let userId = user_id;
+  if (!user_id) {
+    const { data } = await supabase.auth.getUser();
+    userId = data.user?.id;
+  }
 
   const { data: posts, error } = await supabase
     .from("posts")
@@ -68,9 +69,8 @@ export const getPostsAction = async (): Promise<Post[]> => {
       )
     `,
     )
+    .eq("owner_id", userId)
     .order("date_created", { ascending: false });
-
-  console.log("Posts:", posts);
 
   if (error) {
     console.error("Error fetching posts:", error);

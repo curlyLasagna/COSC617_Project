@@ -1,17 +1,17 @@
 "use server";
 import { createClient } from "../supabase/server";
-export default async function follow(followee_id: number) {
+export default async function follow(followee_id: string) {
   const supabase = await createClient();
   try {
     const {
-      data: { session },
+      data: { user },
       error,
-    } = await supabase.auth.getSession();
+    } = await supabase.auth.getUser();
 
     if (error) throw new Error(error.message);
 
-    if (!session) throw new Error("Session is absent, can't get user's id");
-    const follower_id = session.user.id;
+    if (!user) throw new Error("Not authenicate");
+    const follower_id = user.id;
 
     const { data, error: follow_err } = await supabase
       .from("follow")
