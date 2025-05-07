@@ -69,7 +69,6 @@ export const getPostsAction = async (user_id?: string): Promise<Post[]> => {
       )
     `,
     )
-    .eq("owner_id", userId)
     .order("date_created", { ascending: false });
 
   if (error) {
@@ -77,8 +76,16 @@ export const getPostsAction = async (user_id?: string): Promise<Post[]> => {
     return [];
   }
 
+  let filtered_post = posts;
+
+  if (user_id) {
+    filtered_post = posts.filter((post) => {
+      post.users[0]?.auth_user_id === user_id;
+    });
+  }
+
   const resolvedPosts = await Promise.all(
-    posts.map(async (post) => {
+    filtered_post.map(async (post) => {
       const user = Array.isArray(post.users) ? post.users[0] : post.users;
       return {
         id: post.post_id,
