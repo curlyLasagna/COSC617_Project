@@ -77,7 +77,7 @@ export const followUser = async (
   }
 
   if (existing && existing.length > 0) {
-    return `You are already following ${target_account.user.username}`;
+    return `You are already following ${target_account.users.username}`;
   }
 
   // Insert the follow relationship
