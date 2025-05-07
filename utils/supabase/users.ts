@@ -96,6 +96,7 @@ export const followUser = async (
 
   return `You are now following ${target_account.users.username}`;
 };
+
 export const unfollowUser = async (
   target_account: Following,
 ): Promise<string> => {

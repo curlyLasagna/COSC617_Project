@@ -37,10 +37,7 @@ export default function FollowingItem({
     <div className="flex items-center justify-between px-4 py-3 hover:bg-muted/30 transition-colors">
       <div className="flex items-center gap-3">
         <Avatar>
-          <AvatarImage
-            src="https://lnfyusmlxilqhmtlyulr.supabase.co/storage/v1/object/public/pfp//1bf80bf9-1302-48c1-8c53-67dcac7f1821.jpeg"
-            alt={username}
-          />
+          <AvatarImage src={profile_picture_url} alt={username} />
           <AvatarFallback>{username[0].toUpperCase()}</AvatarFallback>
         </Avatar>
         <div>
