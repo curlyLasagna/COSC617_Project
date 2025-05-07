@@ -1,7 +1,16 @@
 "use server";
 import { createClient } from "../supabase/server";
 
-export default async function commentOnPost(
+export interface Comment {
+  content: string;
+  owner_id: string;
+  users: {
+    username: string;
+    profile_picture_url: string | null;
+  }[];
+}
+
+export async function commentOnPost(
   post_id: number,
   content: string,
   parent_comment_id?: number,
@@ -34,4 +43,27 @@ export default async function commentOnPost(
         error instanceof Error ? error.message : "An unknown error occurred",
     };
   }
+}
+
+export async function getComment(postId: string): Promise<Comment[] | null> {
+  const supabase = await createClient();
+
+  const { data: commentData, error: commentError } = await supabase
+    .from("comments")
+    .select(`
+      content,
+      owner_id,
+      users!owner_id (
+        username,
+        profile_picture_url
+      )
+    `)
+    .eq("post_id", postId);
+
+  if (commentError) {
+    console.error("Error fetching comments:", commentError);
+    return null;
+  }
+
+  return commentData as Comment[];
 }

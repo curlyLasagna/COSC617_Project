@@ -11,7 +11,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import commentOnPost from "@/utils/posts/comment-action";
+import { commentOnPost } from "@/utils/posts/comment-action";
 import likeAction from "@/utils/posts/like-action";
 import { Heart, MessageSquare, Repeat2 } from "lucide-react";
 import { useState } from "react";
@@ -23,12 +23,9 @@ export const PostActions = ({ postId }: { postId: number }) => {
   const handleComment = async () => {
     if (!comment.trim()) return;
 
-    console.log("Post ID:", postId);
-    const result = await commentOnPost(postId, comment);
-    if (result.success) {
-      setComment("");
-      setIsOpen(false);
-    }
+    await commentOnPost(postId, comment);
+    setComment("");
+    setIsOpen(false);
   };
 
   const actions = [
