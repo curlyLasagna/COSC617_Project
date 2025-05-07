@@ -44,7 +44,7 @@ export function CreatePostModal({
   return createPortal(
     <Dialog open={isOpen}>
       <div className="fixed inset-0 backdrop-blur-sm z-[9999] flex items-center justify-center">
-        <div ref={modalRef} className="p-8 rounded-lg p-6 rounded-lg relative">
+        <div ref={modalRef} className="p-8 rounded-lg relative">
           <button
             onClick={onClose}
             className="absolute -top-3 -right-3 p-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shadow-sm border"
@@ -53,7 +53,7 @@ export function CreatePostModal({
             <X className="h-4 w-4 text-gray-600" />
           </button>
           <PostTypeButtons
-            onSelect={handleSelect}
+            // onSelect={handleSelect}
             buttonSize="h-24 w-24"
             iconSize="text-4xl"
             className="gap-6"

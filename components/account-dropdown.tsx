@@ -34,7 +34,10 @@ export function AccountDropdown() {
               <Heart className="h-4 w-4" />
               <span>Your Likes</span>
             </button>
-            <button className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent">
+            <button
+              className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent"
+              onClick={() => router.push("/home/following")}
+            >
               <Users className="h-4 w-4" />
               <span>Following</span>
             </button>

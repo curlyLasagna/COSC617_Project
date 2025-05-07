@@ -11,8 +11,10 @@ import { UserAvatar } from "./ui/user-avatar";
 
 export interface Post {
   id: number;
-  username: string;
-  profilePic: string | null;
+  users: {
+    username: string;
+    profile_picture_url: string | null;
+  };
   postTime: Date;
   notes: number;
   isFollowing: boolean;
@@ -102,10 +104,9 @@ export const PostCard = ({ post }: PostCardProps) => {
       <CardHeader className="px-4 pb-2 pt-4">
         <UserAvatar
           user={{
-            username: post.username,
+            username: post.users.username,
             profile_picture_url: "",
           }}
-          profilePic={post.profilePic || ""}
           isFollowing={post.isFollowing}
           postTime={post.postTime}
         />

@@ -1,8 +1,8 @@
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import { RightSidebar } from "@/components/RightSidebar";
 import { CustomTrigger, LeftSidebar } from "@/components/left-sidebar";
+import { RightSidebar } from "@/components/right-sidebar";
 import { StickyFooter } from "@/components/sticky-footer";
 import { TopBar } from "@/components/top-bar";
 import { SidebarProvider } from "@/components/ui/sidebar";

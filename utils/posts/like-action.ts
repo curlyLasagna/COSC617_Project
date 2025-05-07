@@ -16,7 +16,7 @@ export default async function likeAction(postId: number) {
 
     const { data, error: like_err } = await supabase
       .from("likes")
-      .insert([{ user_id, post_id: postId }])
+      .insert([{ owner_id: user_id, post_id: postId }])
       .select();
 
     if (like_err) throw new Error(like_err.message);

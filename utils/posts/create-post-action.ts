@@ -1,10 +1,8 @@
-// app/actions/posts.ts
 "use server";
 
+import { randomUUID } from "crypto";
 import { Post } from "@/components/post-card";
 import { createClient } from "@/utils/supabase/server";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 
 export const createPostAction = async (formData: FormData) => {
   // Initialize Supabase client
@@ -43,8 +41,11 @@ export const createPostAction = async (formData: FormData) => {
   const postType = formData.get("postType")?.toString();
   const title = formData.get("title")?.toString();
   const content = formData.get("content")?.toString();
-  const mediaUrl = formData.get("mediaUrl")?.toString();
+  //   const mediaUrl = formData.get("mediaUrl")?.toString();
   const caption = formData.get("caption")?.toString();
+  const file = formData.get("file") as File;
+
+  console.log("File:", file.size, file.type, file.name);
 
   // Validate required fields
   if (!postType) {
@@ -54,13 +55,33 @@ export const createPostAction = async (formData: FormData) => {
     };
   }
 
+  const { data, error: storage_err } = await supabase.storage
+    .from("media")
+    .upload(`${user.id}/${randomUUID()}`, file, {
+      contentType: file.type,
+    });
+
+  if (storage_err) {
+    return {
+      success: false,
+      message: "Storate error: " + storage_err.message,
+    };
+  }
+
+  if (!data) {
+    return {
+      success: false,
+      message: "Failed to upload file",
+    };
+  }
+
   // Prepare post data for Supabase
   const postInsert = {
     owner_id: user.id,
     user_id: userProfile.user_id,
     text_body: content,
     caption: caption,
-    media_url: mediaUrl,
+    media_url: data.path,
     post_type: postType,
     title: title,
   };
@@ -83,8 +104,10 @@ export const createPostAction = async (formData: FormData) => {
   // Format the response for PostCard component
   const formattedPost: Post = {
     id: insertedPost.post_id,
-    username: userProfile.username || "Anonymous",
-    profilePic: userProfile.profile_picture_url || null,
+    users: {
+      username: userProfile.username || "Anonymous",
+      profile_picture_url: userProfile.profile_picture_url || null,
+    },
     postTime: new Date(insertedPost.date_created || new Date()),
     notes: 0,
     isFollowing: false,
