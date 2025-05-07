@@ -31,22 +31,28 @@ export const listFollowers = async (userId: string) => {
 
 export const listFollowing = async (): Promise<Following[]> => {
   const supabase = await createClient();
-  const { data: user, error: user_error } = await supabase.auth.getUser();
-  const userId = user.user?.id;
-  const { data, error } = await supabase
+  const { data: userInfo, error: userError } = await supabase.auth.getUser();
+  const userId = userInfo.user?.id;
+  const { data: userFollowData, error: userFollowError } = (await supabase
     .from("follow")
-    .select("followee_id, users:users!followee_id(username)")
-    .eq("follower_id", userId);
+    .select(
+      "followee_id, users:users!followee_id(username, profile_picture_url)",
+    )
+    .eq("follower_id", userId)) as { data: Following[] | null; error: any };
 
-  if (error || !data) {
-    console.log(user_error);
+  if (userFollowError || !userFollowData) {
+    console.log(userFollowError);
     return [];
   }
 
-  return data.map((row) => ({
-    followee_id: row.followee_id,
-    username: row.users.username,
+  const followings: Following[] = userFollowData.map((user) => ({
+    followee_id: user.followee_id,
+    users: {
+      username: user.users.username,
+      profile_picture_url: user.users.profile_picture_url,
+    },
   }));
+  return followings;
 };
 
 export const followUser = async (
@@ -71,7 +77,7 @@ export const followUser = async (
   }
 
   if (existing && existing.length > 0) {
-    return `You are already following ${target_account.username}`;
+    return `You are already following ${target_account.user.username}`;
   }
 
   // Insert the follow relationship
@@ -88,7 +94,7 @@ export const followUser = async (
     return "Error occurred while following";
   }
 
-  return `You are now following ${target_account.username}`;
+  return `You are now following ${target_account.users.username}`;
 };
 export const unfollowUser = async (
   target_account: Following,
@@ -105,8 +111,8 @@ export const unfollowUser = async (
   }
 
   if (count === 0) {
-    return `You have already unfollowed ${target_account.username}`;
+    return `You have already unfollowed ${target_account.users.username}`;
   }
 
-  return `You've unfollowed ${target_account.username}`;
+  return `You've unfollowed ${target_account.users.username}`;
 };

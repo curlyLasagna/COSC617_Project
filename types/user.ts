@@ -20,10 +20,16 @@ export interface UIUser {
 
 export interface Following {
   followee_id: uuid;
-  username: string;
+  users: {
+    username: string;
+    profile_picture_url: string;
+  };
 }
 
 export interface Follower {
   follower_id: uuid;
-  username: string;
+  users: {
+    username: string;
+    profile_picture_url: string;
+  };
 }

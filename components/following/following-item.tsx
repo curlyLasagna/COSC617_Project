@@ -5,15 +5,34 @@ import { Button } from "../ui/button";
 
 interface FollowingUserProps {
   uuid: uuid;
-  username: string;
-  pfp: string;
+  users: {
+    username: string;
+    profile_picture_url: string;
+  };
+  onUnfollow: (uuid: uuid) => void;
 }
 
 export default function FollowingItem({
-  username,
   uuid,
-  // pfp,
-}) {
+  users: { username, profile_picture_url },
+  onUnfollow,
+}: FollowingUserProps) {
+  const handleUnfollow = async () => {
+    try {
+      await unfollowUser({
+        followee_id: uuid,
+        users: {
+          username: username,
+          profile_picture_url: profile_picture_url,
+        },
+      } as Following);
+
+      // Call the callback to update the parent state
+      onUnfollow(uuid);
+    } catch (error) {
+      console.error("Failed to unfollow:", error);
+    }
+  };
   return (
     <div className="flex items-center justify-between px-4 py-3 hover:bg-muted/30 transition-colors">
       <div className="flex items-center gap-3">
@@ -31,12 +50,7 @@ export default function FollowingItem({
       <Button
         variant="link"
         className="text-primary text-sm px-0"
-        onClick={async () =>
-          await unfollowUser({
-            followee_id: uuid,
-            username: username,
-          } as Following)
-        }
+        onClick={handleUnfollow}
       >
         Unfollow
       </Button>
