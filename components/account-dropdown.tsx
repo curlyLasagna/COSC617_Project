@@ -1,6 +1,6 @@
 "use client";
 import { createClient } from "@/utils/supabase/client";
-import { Heart, LogOut, User, Users } from "lucide-react";
+import { Heart, LogOut, StickyNote, User, Users } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SidebarMenuButton, SidebarMenuItem } from "./ui/sidebar";
@@ -47,8 +47,8 @@ export function AccountDropdown() {
               className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent"
               onClick={handleBlogClick}
             >
-              <Users className="h-4 w-4" />
-              <span>You</span>
+              <StickyNote className="h-4 w-4" />
+              <span>My Blog</span>
             </button>
             <button className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent">
               <Heart className="h-4 w-4" />
