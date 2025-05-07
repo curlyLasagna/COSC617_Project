@@ -27,7 +27,7 @@ export default async function BlogPage({
   } = await fetchBlogAction(user_id);
 
   if (!blog_success || !blog) {
-    console.error("Error fetching blog:", blog_err);
+    console.log("Error fetching blog:", blog_err);
     return <div>Error loading blog data</div>;
   }
 

@@ -12,7 +12,10 @@ export function BlogComponent({ blog, user }: { blog: Blog; user: User }) {
       <Card className="flex flex-col gap-4 mx-auto shadow-md rounded-lg itesm-center justify-center min-w-[30rem] mb-3 max-w-full">
         <CardHeader className="flex flex-col items-center justify-center p-0 gap-0">
           <img
-            src={blog.banner_url || ""}
+            src={
+              blog.banner_url ||
+              "https://i.kym-cdn.com/photos/images/newsfeed/002/556/490/932.jpg"
+            }
             alt="Blog Banner"
             className="w-full rounded-md shadow-md object-cover p-0 m-0  h-[30rem]"
           />
