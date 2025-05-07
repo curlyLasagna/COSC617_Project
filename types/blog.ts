@@ -1,6 +1,6 @@
 export interface Blog {
   blog_id: number;
-  owner_id: number; // References user_id
+  owner_id: string; // References user_id
   handle_url: string; // URL-friendly identifier
   title: string;
   bio: string | null;
