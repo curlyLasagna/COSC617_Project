@@ -70,8 +70,6 @@ export const getPostsAction = async (): Promise<Post[]> => {
     )
     .order("date_created", { ascending: false });
 
-  console.log("Posts:", posts);
-
   if (error) {
     console.error("Error fetching posts:", error);
     return [];

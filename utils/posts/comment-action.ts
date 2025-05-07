@@ -19,7 +19,7 @@ export default async function commentOnPost(
 
     const { data, error: comment_err } = await supabase
       .from("comments")
-      .insert([{ post_id, content, owner_id, parent_id: parent_comment_id }])
+      .insert({ post_id, content, owner_id, parent_id: parent_comment_id })
       .select();
 
     if (comment_err) throw new Error(comment_err.message);
