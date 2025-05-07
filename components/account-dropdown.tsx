@@ -12,7 +12,7 @@ export function AccountDropdown() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.refresh();
+    router.push("/home");
   };
 
   return (
@@ -32,14 +32,14 @@ export function AccountDropdown() {
           <div className="ml-4 mt-1 space-y-1 bg-background rounded-md shadow-lg border">
             <button
               className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent"
-              onClick={() => router.push("/likes")}
+              onClick={() => router.push("/account/likes")}
             >
               <Heart className="h-4 w-4" />
               <span>Your Likes</span>
             </button>
             <button
               className="flex items-center gap-3 w-full px-4 py-2 text-left hover:bg-accent"
-              onClick={() => router.push("/home/following")}
+              onClick={() => router.push("/account/following")}
             >
               <Users className="h-4 w-4" />
               <span>Following</span>
