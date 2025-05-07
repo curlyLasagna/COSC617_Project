@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -6,6 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Link } from "lucide-react";
 import { Button } from "./ui/button";
+import { CommentList } from "./ui/comment-list";
 import { PostActions } from "./ui/post-actions";
 import { UserAvatar } from "./ui/user-avatar";
 
@@ -126,6 +128,10 @@ export const PostCard = ({ post }: PostCardProps) => {
         </Button>
         <PostActions postId={post.id} />
       </CardFooter>
+
+      <div className="border-t border-neutral-400 dark:border-neutral-700" />
+
+      <CommentList postId={post.id.toString()} />
     </Card>
   );
 };

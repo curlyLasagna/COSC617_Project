@@ -1,4 +1,4 @@
-import { User } from "@/types/user";
+import { UIUser, User } from "@/types/user";
 
 // Mock data for users, used to create test-posts and mock-blogs
 export const mockUsers: User[] = [
@@ -9,7 +9,7 @@ export const mockUsers: User[] = [
     profile_picture_url: "https://i.pravatar.cc/150?img=11",
     date_created: new Date(Date.now() - 3600000 * 24 * 30),
     date_updated: new Date(Date.now() - 3600000 * 24 * 7),
-    user_uuid: "",
+    auth_user_id: "1",
   },
   {
     user_id: 2,
@@ -18,7 +18,7 @@ export const mockUsers: User[] = [
     profile_picture_url: "https://i.pravatar.cc/150?img=22",
     date_created: new Date(Date.now() - 3600000 * 24 * 90),
     date_updated: new Date(Date.now() - 3600000 * 24 * 14),
-    user_uuid: "",
+    auth_user_id: "2",
   },
   {
     user_id: 3,
@@ -27,7 +27,7 @@ export const mockUsers: User[] = [
     profile_picture_url: "https://i.pravatar.cc/150?img=33",
     date_created: new Date(Date.now() - 3600000 * 24 * 60),
     date_updated: new Date(Date.now() - 3600000 * 24 * 3),
-    user_uuid: "",
+    auth_user_id: "3",
   },
   {
     user_id: 4,
@@ -36,6 +36,6 @@ export const mockUsers: User[] = [
     profile_picture_url: "https://i.pravatar.cc/150?img=55",
     date_created: new Date(Date.now() - 3600000 * 24 * 180),
     date_updated: new Date(Date.now() - 3600000 * 24 * 1),
-    user_uuid: "",
+    auth_user_id: "4",
   },
 ];

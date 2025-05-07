@@ -1,11 +1,5 @@
 import { Input } from "@/components/ui/input";
-import {
-  Sidebar,
-  SidebarFooter,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarFooter } from "@/components/ui/sidebar";
 import { uiBlogs } from "@/data/mock-blogs";
 import { SearchIcon } from "lucide-react";
 import { RecommendedBlogs } from "./recommended-blogs";

@@ -1,12 +1,12 @@
 export type uuid = string;
 export interface User {
-  user_id: number;
+  user_id: number | null;
   username: string;
   email: string;
   profile_picture_url: string | null;
-  user_uuid: uuid;
   date_created: Date;
   date_updated: Date;
+  auth_user_id: string;
 }
 
 export interface UIUser {
